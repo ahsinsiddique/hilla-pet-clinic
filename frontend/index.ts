@@ -1,6 +1,5 @@
-import { Router } from '@vaadin/router';
-import { routes } from './routes.js';
+import { createElement } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.js';
 
-export const router = new Router(document.querySelector('#outlet'));
-
-router.setRoutes(routes);
+createRoot(document.getElementById('outlet')!).render(createElement(App));
