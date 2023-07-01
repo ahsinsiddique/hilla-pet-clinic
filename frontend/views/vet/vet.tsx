@@ -1,40 +1,36 @@
-
-import { Grid } from "@hilla/react-components/Grid.js";
-import { GridColumn } from "@hilla/react-components/GridColumn.js";
-import {CompanyReactEndpoint, OwnerEndpoint, VetEndpoint} from "Frontend/generated/endpoints";
-import { useEffect, useState } from "react";
+import {Grid} from "@hilla/react-components/Grid.js";
+import {GridColumn} from "@hilla/react-components/GridColumn.js";
+import {VetEndpoint} from "Frontend/generated/endpoints";
+import {useEffect, useState} from "react";
 
 export default function VetView() {
-    const [owners, setOwners] = useState([]);
+    const [owners, setVets] = useState([]);
     let selectedCompany;
-    const setSelectedCompanise = (event: any) => {
-      console.log(event)
+    const setSelectedItems = (event: any) => {
+        console.log(event)
     }
     const fetchData = async () => {
-      const data: any = await VetEndpoint.getOwners();
-       // const data2: any = await VetEndpoint.();
-
-        console.log(data)
-
-      setOwners(data);
+        const data: any = await VetEndpoint.getAllVets();
+        setVets(data);
     }
     useEffect(() => {
-      fetchData()
-  
+        fetchData()
+
     }, [])
     return (
-      <Grid
-        items={owners}
-        selectedItems={selectedCompany}
-        onActiveItemChanged={({ detail: { value } }) =>
-          setSelectedCompanise(value ? [value] : [])
-        }
-      >
-        <GridColumn path="version" />
-        <GridColumn path="firstName" />
-        <GridColumn path="lastName" />
-        <GridColumn path="email" />
-        
-      </Grid>
+        <Grid
+            items={owners}
+            selectedItems={selectedCompany}
+            onActiveItemChanged={({detail: {value}}) =>
+                setSelectedItems(value ? [value] : [])
+            }
+        >
+            <GridColumn header="#">
+                {({ item }) => <span>{item.id}</span>}
+            </GridColumn>
+            <GridColumn path="firstName"/>
+            <GridColumn path="lastName"/>
+            <GridColumn path="email"/>
+        </Grid>
     );
 }
