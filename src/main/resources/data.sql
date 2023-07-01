@@ -9,7 +9,7 @@ INSERT INTO "COMPANY" (ID, VERSION, NAME) VALUES
 (7, 1, 'Avaya Inc.'),
 (8, 1, 'Laboratory Corporation of America Holdings'),
 (9, 1, 'AutoZone, Inc.'),
-(10, 1, 'Linens ''n Things Inc.');   
+(10, 1, 'Linens ''n Things Inc.');
 INSERT INTO "CONTACT" (ID, VERSION, EMAIL,FIRST_NAME,LAST_NAME,COMPANY_ID,STATUS_ID) VALUES
 (11, 1, 'eula.lane@jigrormo.ye', 'Eula', 'Lane', 8, 1),
 (12, 1, 'barry.rodriquez@zun.mm', 'Barry', 'Rodriquez', 7, 5),
@@ -35,7 +35,7 @@ INSERT INTO "CONTACT" (ID, VERSION, EMAIL,FIRST_NAME,LAST_NAME,COMPANY_ID,STATUS
 (32, 1, 'bobby.pearson@ib.kg', 'Bobby', 'Pearson', 9, 1),
 (33, 1, 'larry.ciappi@ba.lk', 'Larry', 'Ciappi', 10, 2),
 (34, 1, 'ronnie.salucci@tohhij.lv', 'Ronnie', 'Salucci', 9, 1),
-(35, 1, 'walter.grossi@tuvo.sa', 'Walter', 'Grossi', 9, 1);      
+(35, 1, 'walter.grossi@tuvo.sa', 'Walter', 'Grossi', 9, 1);
 INSERT INTO "CONTACT" (ID, VERSION, EMAIL,FIRST_NAME,LAST_NAME,COMPANY_ID,STATUS_ID) VALUES
 (36, 1, 'frances.koopmans@foga.tw', 'Frances', 'Koopmans', 7, 5),
 (37, 1, 'frances.fujimoto@uswuzzub.jp', 'Frances', 'Fujimoto', 6, 5),
@@ -63,8 +63,7 @@ INSERT INTO "CONTACT" (ID, VERSION, EMAIL,FIRST_NAME,LAST_NAME,COMPANY_ID,STATUS
 (59, 1, 'essie.adams@iliat.cw', 'Essie', 'Adams', 8, 5),
 (60, 1, 'gary.osborne@do.ga', 'Gary', 'Osborne', 7, 5);
 
---  application data ---------------     add Owners data
-
+--  application data ---------------
 INSERT INTO vets VALUES (default, 'James', 'Carter');
 INSERT INTO vets VALUES (default, 'Helen', 'Leary');
 INSERT INTO vets VALUES (default, 'Linda', 'Douglas');
@@ -82,39 +81,39 @@ INSERT INTO vet_specialties VALUES (3, 3);
 INSERT INTO vet_specialties VALUES (4, 2);
 INSERT INTO vet_specialties VALUES (5, 1);
 
-INSERT INTO types VALUES (default, 'cat');
-INSERT INTO types VALUES (default, 'dog');
-INSERT INTO types VALUES (default, 'lizard');
-INSERT INTO types VALUES (default, 'snake');
-INSERT INTO types VALUES (default, 'bird');
-INSERT INTO types VALUES (default, 'hamster');
+INSERT INTO types VALUES (default, 'cat', 1);
+INSERT INTO types VALUES (default, 'dog', 1);
+INSERT INTO types VALUES (default, 'lizard', 1);
+INSERT INTO types VALUES (default, 'snake', 1);
+INSERT INTO types VALUES (default, 'bird', 1);
+INSERT INTO types VALUES (default, 'hamster', 1);
 
-INSERT INTO owners VALUES (default, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023');
-INSERT INTO owners VALUES (default, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749');
-INSERT INTO owners VALUES (default, 'Eduardo', 'Rodriquez', '2693 Commerce St.', 'McFarland', '6085558763');
-INSERT INTO owners VALUES (default, 'Harold', 'Davis', '563 Friendly St.', 'Windsor', '6085553198');
-INSERT INTO owners VALUES (default, 'Peter', 'McTavish', '2387 S. Fair Way', 'Madison', '6085552765');
-INSERT INTO owners VALUES (default, 'Jean', 'Coleman', '105 N. Lake St.', 'Monona', '6085552654');
-INSERT INTO owners VALUES (default, 'Jeff', 'Black', '1450 Oak Blvd.', 'Monona', '6085555387');
-INSERT INTO owners VALUES (default, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '6085557683');
-INSERT INTO owners VALUES (default, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435');
-INSERT INTO owners VALUES (default, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023',1, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749',1, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Eduardo', 'Rodriquez', '2693 Commerce St.', 'McFarland', '6085558763', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Harold', 'Davis', '563 Friendly St.', 'Windsor', '6085553198', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Peter', 'McTavish', '2387 S. Fair Way', 'Madison', '6085552765', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Jean', 'Coleman', '105 N. Lake St.', 'Monona', '6085552654', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Jeff', 'Black', '1450 Oak Blvd.', 'Monona', '6085555387', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '6085557683', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435', 2, 'ahsin@gmail.com');
+INSERT INTO owners (id, first_name, last_name,address,  city, telephone, version, email) VALUES (default, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487', 2, 'ahsin@gmail.com');
 
-INSERT INTO pets VALUES (default, 'Leo', '2010-09-07', 1, 1);
-INSERT INTO pets VALUES (default, 'Basil', '2012-08-06', 6, 2);
-INSERT INTO pets VALUES (default, 'Rosy', '2011-04-17', 2, 3);
-INSERT INTO pets VALUES (default, 'Jewel', '2010-03-07', 2, 3);
-INSERT INTO pets VALUES (default, 'Iggy', '2010-11-30', 3, 4);
-INSERT INTO pets VALUES (default, 'George', '2010-01-20', 4, 5);
-INSERT INTO pets VALUES (default, 'Samantha', '2012-09-04', 1, 6);
-INSERT INTO pets VALUES (default, 'Max', '2012-09-04', 1, 6);
-INSERT INTO pets VALUES (default, 'Lucky', '2011-08-06', 5, 7);
-INSERT INTO pets VALUES (default, 'Mulligan', '2007-02-24', 2, 8);
-INSERT INTO pets VALUES (default, 'Freddy', '2010-03-09', 5, 9);
-INSERT INTO pets VALUES (default, 'Lucky', '2010-06-24', 2, 10);
-INSERT INTO pets VALUES (default, 'Sly', '2012-06-08', 1, 10);
+INSERT INTO pets VALUES (default, 'Leo', '2010-09-07', 1, 1, 1);
+INSERT INTO pets VALUES (default, 'Basil', '2012-08-06', 6, 2, 1);
+INSERT INTO pets VALUES (default, 'Rosy', '2011-04-17', 2, 3, 1);
+INSERT INTO pets VALUES (default, 'Jewel', '2010-03-07', 2, 3, 1);
+INSERT INTO pets VALUES (default, 'Iggy', '2010-11-30', 3, 4, 1);
+INSERT INTO pets VALUES (default, 'George', '2010-01-20', 4, 5, 1);
+INSERT INTO pets VALUES (default, 'Samantha', '2012-09-04', 1, 6, 1);
+INSERT INTO pets VALUES (default, 'Max', '2012-09-04', 1, 6, 1);
+INSERT INTO pets VALUES (default, 'Lucky', '2011-08-06', 5, 7, 1);
+INSERT INTO pets VALUES (default, 'Mulligan', '2007-02-24', 2, 8, 1);
+INSERT INTO pets VALUES (default, 'Freddy', '2010-03-09', 5, 9, 1);
+INSERT INTO pets VALUES (default, 'Lucky', '2010-06-24', 2, 10, 1);
+INSERT INTO pets VALUES (default, 'Sly', '2012-06-08', 1, 10, 1);
 
-INSERT INTO visits VALUES (default, 7, '2013-01-01', 'rabies shot');
-INSERT INTO visits VALUES (default, 8, '2013-01-02', 'rabies shot');
-INSERT INTO visits VALUES (default, 8, '2013-01-03', 'neutered');
-INSERT INTO visits VALUES (default, 7, '2013-01-04', 'spayed');
+INSERT INTO visits VALUES (default, 7, '2013-01-01', 'rabies shot', 1);
+INSERT INTO visits VALUES (default, 8, '2013-01-02', 'rabies shot', 1);
+INSERT INTO visits VALUES (default, 8, '2013-01-03', 'neutered', 1);
+INSERT INTO visits VALUES (default, 7, '2013-01-04', 'spayed', 1);

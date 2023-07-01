@@ -3,6 +3,7 @@ import MainLayout from 'Frontend/views/MainLayout.js';
 import { lazy } from 'react';
 import { createBrowserRouter, IndexRouteObject, NonIndexRouteObject, useMatches } from 'react-router-dom';
 import OwnerView from './views/owner/Owner';
+import VetView from "Frontend/views/vet/vet";
 
 const AboutView = lazy(async () => import('Frontend/views/about/AboutView.js'));
 export type MenuProps = Readonly<{
@@ -37,6 +38,7 @@ export const routes: readonly ViewRouteObject[] = [
       { path: '/', element: <HelloReactView />, handle: { icon: 'globe-solid', title: 'Home' } },
       { path: '/Vets', element: <AboutView />, handle: { icon: 'user', title: 'Vets' } },
       { path: '/owner', element: <OwnerView />, handle: { icon: 'user', title: 'Owner' } },
+      { path: '/vetsv', element: <VetView />, handle: { icon: 'user', title: 'vet' } },
     ],
   },
 ];

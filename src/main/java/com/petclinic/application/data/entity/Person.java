@@ -1,10 +1,10 @@
 package com.petclinic.application.data.entity;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
-@Entity
+@MappedSuperclass
 public class Person extends AbstractEntity {
 
     @NotEmpty

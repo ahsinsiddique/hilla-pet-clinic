@@ -8,6 +8,7 @@ import org.springframework.data.repository.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface VetRepository extends Repository<Vet, Integer> {
 
@@ -17,7 +18,7 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	 */
 	@Transactional(readOnly = true)
 	@Cacheable("vets")
-	Collection<Vet> findAll() throws DataAccessException;
+	List<Vet> findAll() throws DataAccessException;
 
 	/**
 	 * Retrieve all <code>Vet</code>s from data store in Pages
@@ -25,8 +26,8 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	 * @return
 	 * @throws DataAccessException
 	 */
-	@Transactional(readOnly = true)
-	@Cacheable("vets")
-	Page<Vet> findAll(Pageable pageable) throws DataAccessException;
+//	@Transactional(readOnly = true)
+//	@Cacheable("vets")
+//	List<Vet> findAll() throws DataAccessException;
 
 }
