@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/themes/hilla-logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/MainLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/home/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/home/HomeView.tsx" afterDir="false" />
@@ -91,7 +92,7 @@
       <workItem from="1687375708417" duration="950000" />
       <workItem from="1687409293231" duration="227000" />
       <workItem from="1687409689380" duration="415000" />
-      <workItem from="1687869822068" duration="27173000" />
+      <workItem from="1687869822068" duration="28675000" />
     </task>
     <servers />
   </component>

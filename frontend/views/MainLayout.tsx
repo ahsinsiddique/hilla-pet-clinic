@@ -24,15 +24,12 @@ export default function MenuOnLeftLayout() {
 
     return (
         <AppLayout>
-            <DrawerToggle slot="navbar"></DrawerToggle>
-            <h3 slot="navbar">Hilla Pet Clinic</h3>
-            <header slot="drawer">
-                <h1 className="text-l m-0">Hilla Pet Clinic</h1>
-            </header>
+           
+            <h3 style={{marginLeft: "10rem"}} slot="navbar">
+            <img src="../themes/hilla-logo.png" alt="" style={{width: "25px", paddingRight: "1rem"}} />Hilla Pet Clinic</h3>
             <Tabs slot="navbar" orientation="horizontal">
-
                 {menuRoutes.map(({path, handle: {icon, title}}) => (
-                    <Tab>
+                    <Tab key={path}>
                         <NavLink
                             className={({ isActive }) => `${css.navlink} ${isActive ? css.navlink_active : ''}`}
                             key={path}
@@ -53,96 +50,10 @@ export default function MenuOnLeftLayout() {
                     </Tab>
                 ))}
             </Tabs>
-            <Scroller slot="drawer" scroll-direction="vertical">
-                <nav>
-                    {menuRoutes.map(({ path, handle: { icon, title } }) => (
-                        <NavLink
-                            className={({ isActive }) => `${css.navlink} ${isActive ? css.navlink_active : ''}`}
-                            key={path}
-                            to={path}
-                        >
-                            {({ isActive }) => (
-                                <Item key={path} selected={isActive}>
-                  <span
-                      className={css.navicon}
-                      style={
-                          {
-                              '--mask-image': `url('line-awesome/svg/${icon}.svg')`,
-                              maskImage: 'var(--mask-image)',
-                              WebkitMaskImage: 'var(--mask-image)',
-                          } as any
-                      }
-                      aria-hidden="true"
-                  ></span>
-                                    {title}
-                                </Item>
-                            )}
-                        </NavLink>
-                    ))}
-                </nav>
-            </Scroller>
-            <footer slot="drawer" />
-
+           
             <Suspense fallback={<Placeholder />}>
                 <Outlet />
             </Suspense>
         </AppLayout>
     );
-}
-
-
-export function Test() {
-    const matches = useViewMatches();
-
-    const currentTitle = matches[matches.length - 1]?.handle?.title ?? 'Unknown';
-
-    const menuRoutes = (routes[0]?.children || []).filter(
-        (route) => route.path && route.handle && route.handle.icon && route.handle.title
-    ) as readonly MenuRoute[];
-    return (
-        <AppLayout className="block h-full" primarySection="drawer">
-            <header slot="drawer">
-                <h1 className="text-l m-0">Hilla Pet Clinic</h1>
-            </header>
-            <Scroller slot="drawer" scroll-direction="vertical">
-                <nav>
-                    {menuRoutes.map(({ path, handle: { icon, title } }) => (
-                        <NavLink
-                            className={({ isActive }) => `${css.navlink} ${isActive ? css.navlink_active : ''}`}
-                            key={path}
-                            to={path}
-                        >
-                            {({ isActive }) => (
-                                <Item key={path} selected={isActive}>
-                  <span
-                      className={css.navicon}
-                      style={
-                          {
-                              '--mask-image': `url('line-awesome/svg/${icon}.svg')`,
-                              maskImage: 'var(--mask-image)',
-                              WebkitMaskImage: 'var(--mask-image)',
-                          } as any
-                      }
-                      aria-hidden="true"
-                  ></span>
-                                    {title}
-                                </Item>
-                            )}
-                        </NavLink>
-                    ))}
-                </nav>
-            </Scroller>
-            <footer slot="drawer" />
-
-            <DrawerToggle slot="navbar" aria-label="Menu toggle"></DrawerToggle>
-            <h2 slot="navbar" className="text-l m-0">
-                {currentTitle}
-            </h2>
-
-            <Suspense fallback={<Placeholder />}>
-                <Outlet />
-            </Suspense>
-        </AppLayout>
-
-    )
 }
