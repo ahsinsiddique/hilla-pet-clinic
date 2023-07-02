@@ -1,18 +1,11 @@
 import {CompanyReactEndpoint} from "Frontend/generated/endpoints";
 import {useEffect, useState} from "react";
-import {Grid} from "@hilla/react-components/Grid.js";
-import {GridColumn} from "@hilla/react-components/GridColumn.js";
+import OwnerView from "Frontend/views/owner/Owner";
 
 export default function HomeView() {
     const [companies, setCompanies] = useState([]);
-    let selectedCompany;
-    const setSelectedItems = (event: any) => {
-        console.log(event)
-    }
     const fetchData = async () => {
         const data: any = await CompanyReactEndpoint.getCompanies();
-        console.log(data)
-
         setCompanies(data);
     }
     useEffect(() => {
@@ -20,19 +13,6 @@ export default function HomeView() {
 
     }, [])
     return (
-        <Grid
-            items={companies}
-            selectedItems={selectedCompany}
-            onActiveItemChanged={({detail: {value}}) =>
-                setSelectedItems(value ? [value] : [])
-            }
-        >
-            <GridColumn path="version"/>
-            <GridColumn path="name"/>
-            <GridColumn path=""/>
-            <GridColumn header="# Of items">
-                {({item}) => <span>{item && item.employees.length.toString()}</span>}
-            </GridColumn>
-        </Grid>
+      <OwnerView/>
     );
 }
