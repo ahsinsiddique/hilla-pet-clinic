@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetReactEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/themes/hilla-pet-clinic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/themes/pets.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/vet/vet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/vet/vet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/VetRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/vet/VetController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/vet/VetRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VetEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VetEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/about/AboutView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/home/HomeView.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/themes" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -73,6 +65,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/themes" />
       <recent name="$PROJECT_DIR$/frontend/views" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -100,7 +93,7 @@
       <workItem from="1687375708417" duration="950000" />
       <workItem from="1687409293231" duration="227000" />
       <workItem from="1687409689380" duration="415000" />
-      <workItem from="1687869822068" duration="18291000" />
+      <workItem from="1687869822068" duration="20755000" />
     </task>
     <servers />
   </component>
