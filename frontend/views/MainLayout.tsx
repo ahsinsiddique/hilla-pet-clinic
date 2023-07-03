@@ -29,7 +29,7 @@ export default function MenuOnLeftLayout() {
             <img src="../themes/hilla-logo.png" alt="" style={{width: "25px", paddingRight: "1rem"}} />Hilla Pet Clinic</h3>
             <Tabs slot="navbar" orientation="horizontal">
                 {menuRoutes.map(({path, handle: {icon, title}}) => (
-                    <Tab key={path}>
+                    <Tab key={path} >
                         <NavLink
                             className={({ isActive }) => `${css.navlink} ${isActive ? css.navlink_active : ''}`}
                             key={path}

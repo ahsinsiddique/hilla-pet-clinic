@@ -87,6 +87,7 @@
     "@vaadin/virtual-list": "24.1.0",
     "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
+    "formik": "^2.2.9",
     "lit": "2.7.4",
     "mobx": "^6.3.5",
     "react": "^18.2.0",
@@ -204,7 +205,8 @@
     "classnames": "$classnames",
     "react": "$react",
     "react-dom": "$react-dom",
-    "react-router-dom": "$react-router-dom"
+    "react-router-dom": "$react-router-dom",
+    "formik": "$formik"
   },
   "vaadin": {
     "dependencies": {
@@ -309,6 +311,6 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "02e61a4800a1ccd3448c8b3d8ddb20aeb877a2df7fffeba4cb0af0f1dda7b60f"
+    "hash": "86249087033fb230fd1c30b7716c9fbc7cf87ee6eee6a2d04f2010bedaef7365"
   }
 }

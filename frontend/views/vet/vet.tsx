@@ -18,7 +18,7 @@ export default function VetView() {
 
     }, [])
     return (
-        <Grid
+        <Grid className={'container'}
             items={owners}
             selectedItems={selectedCompany}
             onActiveItemChanged={({detail: {value}}) =>
