@@ -8,12 +8,13 @@ import { EndpointValidationError } from '@hilla/frontend';
 import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owner/Owner';
 import { OwnerEndpoint } from 'Frontend/generated/endpoints';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
-import { Select } from '@hilla/react-components/Select.js';
 import { EmailField } from '@hilla/react-components/EmailField.js';
-import { criteria } from './OwnerCRUD';
 
 export default function OwnerForm() {
-    const ownerInitialValues = { firstName: '', lastName: '', address: '', city: '', telephone: '' }
+    const ownerInitialValues = {
+        firstName: '', lastName: '', address: '',
+        city: '', telephone: '', email: '', type: '', new: true, version: 1
+    }
     const [owners, setOwners] = useState(Array<Owner>());
 
     useEffect(() => {
@@ -23,20 +24,19 @@ export default function OwnerForm() {
         })();
     }, []);
 
-    const formik: any = useFormik({
+    let formik = useFormik({
         initialValues: ownerInitialValues,
-        onSubmit: async (value: Owner | any, { setSubmitting, setErrors }) => {
+        onSubmit: async (values: Owner, { setSubmitting, setErrors, setStatus }) => {
             try {
-                console.log(value)
-                debugger
-                const saved = (await OwnerEndpoint.processCreationForm(value)) ?? value;
-                //   setTodos([...todos, saved]);
+                console.log(values)
+
+                const saved = (await OwnerEndpoint.processCreationForm(values)) ?? values;
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {
                     const errors: FormikErrors<Owner> = {};
                     for (const error of e.validationErrorData) {
-                        if (typeof error.parameterName === 'string' && !(error.parameterName in ownerInitialValues)) {
+                        if (typeof error.parameterName === 'string' && (error.parameterName in ownerInitialValues)) {
                             const key = error.parameterName as string & keyof Owner;
                             errors[key] = error.message.substring(error.message.indexOf("validation error:"));
                         }
@@ -53,7 +53,7 @@ export default function OwnerForm() {
         <>
             <VerticalLayout theme="spacing" style={{ alignItems: 'center', }}>
                 <TextField
-                 style={{ width: "20%" }}
+                    style={{ width: "20%" }}
                     name="firstName"
                     label="First Name"
                     placeholder="First Name"
@@ -61,7 +61,7 @@ export default function OwnerForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.firstName}
-                    invalid={formik.errors.task ? true : false}
+                    invalid={formik.errors.firstName ? true : false}
                 ></TextField>
                 <TextField label="Last Name" style={{ width: "20%" }}
                     name="lastName"
@@ -69,7 +69,9 @@ export default function OwnerForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.lastName}
-                    placeholder="Last Name" />
+                    placeholder="Last Name"
+                    invalid={formik.errors.lastName ? true : false}
+                     />
 
                 <EmailField
                     name="email"
@@ -81,6 +83,8 @@ export default function OwnerForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleChange}
                     style={{ width: "20%" }}
+                    invalid={formik.errors.email ? true : false}
+
                 />
                 <TextField label="Address"
                     name="address"
@@ -89,7 +93,9 @@ export default function OwnerForm() {
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.address}
                     style={{ width: "20%" }}
-                    placeholder="23 st,block 2, NY" />
+                    placeholder="23 st,block 2, NY" 
+                    invalid={formik.errors.address ? true : false}
+                    />
 
                 <TextField label="City" style={{ width: "20%" }}
                     name="city"
@@ -97,7 +103,9 @@ export default function OwnerForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.city}
-                    placeholder="city" />
+                    placeholder="city" 
+                    invalid={formik.errors.city ? true : false}
+                    />
 
                 <TextField label="Telephone"
                     name="telephone"
@@ -106,12 +114,17 @@ export default function OwnerForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.telephone}
-                    placeholder="Telephone" />
-                <Select style={{ width: "20%" }}
+                    placeholder="Telephone"
+                    invalid={formik.errors.telephone ? true : false}
+                     />
+                {/* <Select style={{ width: "20%" }}
                     label="Type"
+                    name='type'
                     items={criteria}
+                    errorMessage={formik.errors.type}
+                    invalid={formik.errors.telephone ? true : false}
                     value={criteria && criteria[0]?.value}
-                />
+                /> */}
                 <Button theme="primary" onClick={formik.submitForm}
                     disabled={formik.isSubmitting}
                 >Save</Button>
