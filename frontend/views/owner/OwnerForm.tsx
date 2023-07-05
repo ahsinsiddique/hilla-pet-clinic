@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FormikErrors, useFormik } from 'formik';
 import { Button } from '@hilla/react-components/Button.js';
 import { TextField } from '@hilla/react-components/TextField.js';
@@ -10,27 +10,31 @@ import { OwnerEndpoint } from 'Frontend/generated/endpoints';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import { EmailField } from '@hilla/react-components/EmailField.js';
 
-export default function OwnerForm() {
-    const ownerInitialValues = {
+export default function OwnerForm(props: any) {
+    let ownerInitialValues = props[0] ? props[0] : {
         firstName: '', lastName: '', address: '',
-        city: '', telephone: '', email: '', type: '', new: true, version: 1
+        city: '', telephone: '', email: '', type: '', new: true, version: 1, id: 1
     }
-    const [owners, setOwners] = useState(Array<Owner>());
 
+    const onDataSave = (data: Owner) => {
+        props.onDataSaved(data);
+    };
     useEffect(() => {
-        (async () => {
-            let data: any = await OwnerEndpoint.getOwners();
-            setOwners(data);
-        })();
-    }, []);
+        ownerInitialValues = props[0];
+    }, [props]);
 
-    let formik = useFormik({
+    let formik: any = useFormik({
         initialValues: ownerInitialValues,
         onSubmit: async (values: Owner, { setSubmitting, setErrors, setStatus }) => {
             try {
                 console.log(values)
+                if (props && props[0]) {
+                    (await OwnerEndpoint.initUpdateOwnerForm(values)) ?? values;
 
-                const saved = (await OwnerEndpoint.processCreationForm(values)) ?? values;
+                    onDataSave(values);
+                } else {
+                    const saved = (await OwnerEndpoint.processCreationForm(values)) ?? values;
+                }
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {
@@ -71,7 +75,7 @@ export default function OwnerForm() {
                     errorMessage={formik.errors.lastName}
                     placeholder="Last Name"
                     invalid={formik.errors.lastName ? true : false}
-                     />
+                />
 
                 <EmailField
                     name="email"
@@ -93,9 +97,9 @@ export default function OwnerForm() {
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.address}
                     style={{ width: "20%" }}
-                    placeholder="23 st,block 2, NY" 
+                    placeholder="23 st,block 2, NY"
                     invalid={formik.errors.address ? true : false}
-                    />
+                />
 
                 <TextField label="City" style={{ width: "20%" }}
                     name="city"
@@ -103,9 +107,9 @@ export default function OwnerForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleChange}
                     errorMessage={formik.errors.city}
-                    placeholder="city" 
+                    placeholder="city"
                     invalid={formik.errors.city ? true : false}
-                    />
+                />
 
                 <TextField label="Telephone"
                     name="telephone"
@@ -116,7 +120,7 @@ export default function OwnerForm() {
                     errorMessage={formik.errors.telephone}
                     placeholder="Telephone"
                     invalid={formik.errors.telephone ? true : false}
-                     />
+                />
                 {/* <Select style={{ width: "20%" }}
                     label="Type"
                     name='type'
