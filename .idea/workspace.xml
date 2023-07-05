@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/services/OwnerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/themes/hilla-pet-clinic/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/themes/hilla-pet-clinic/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetReactEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +100,7 @@
       <workItem from="1687409293231" duration="227000" />
       <workItem from="1687409689380" duration="415000" />
       <workItem from="1687869822068" duration="32411000" />
-      <workItem from="1688537011786" duration="3204000" />
+      <workItem from="1688537011786" duration="4930000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ import { createBrowserRouter, IndexRouteObject, NonIndexRouteObject, useMatches 
 import OwnerView from './views/owner/Owner';
 import VetView from "Frontend/views/vet/vet";
 import HomeView from "Frontend/views/home/HomeView";
+import PetForm from './views/owner/PetForm';
 
 const AboutView = lazy(async () => import('Frontend/views/home/HomeView.js'));
 export type MenuProps = Readonly<{
@@ -38,6 +39,7 @@ export const routes: readonly ViewRouteObject[] = [
       { path: '/', element: <HomeView />, handle: { icon: 'globe-solid', title: 'Home' } },
       { path: '/vets', element: <VetView />, handle: { icon: 'user', title: 'Vets' } },
       { path: '/owner', element: <OwnerView />, handle: { icon: 'user', title: 'Owner' } },
+      { path: '/pet', element: <PetForm />, handle: { icon: 'animal', title: 'Create Pet' } },
     ],
   },
 ];

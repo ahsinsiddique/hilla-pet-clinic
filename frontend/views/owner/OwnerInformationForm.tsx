@@ -22,7 +22,7 @@ export default function OwnerInformationForm(props: any) {
         setOwner(props.owner.selectedItems)
     }, [])
     return (
-        <>
+        <div className="container">
             <h2 className="mb-1">Owner Information</h2>
             {!isEditOwner &&
                 <>
@@ -60,6 +60,6 @@ export default function OwnerInformationForm(props: any) {
                 <GridColumn path="name" />
                 <GridColumn path="birthDate" />
             </Grid>}
-        </>
+        </div>
     )
 }
