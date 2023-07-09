@@ -12,7 +12,7 @@ import java.util.Locale;
 @Component
 public class PetTypeFormatter implements Formatter<PetType> {
 
-	private OwnerRepository owners;
+	private final  OwnerRepository owners;
 
 	
 	public PetTypeFormatter(OwnerRepository owners) {

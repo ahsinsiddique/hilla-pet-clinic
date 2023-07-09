@@ -7,8 +7,12 @@
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/themes/hilla-pet-clinic/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/themes/hilla-pet-clinic/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetReactEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/owner/PetForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/PetForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +68,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReactorSettings">

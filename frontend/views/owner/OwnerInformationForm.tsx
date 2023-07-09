@@ -4,6 +4,7 @@ import { GridColumn } from "@hilla/react-components/GridColumn.js";
 import Owner from "Frontend/generated/com/petclinic/application/data/entity/owner/Owner";
 import { useEffect, useState } from "react";
 import OwnerForm from "./OwnerForm";
+import PetForm from "./PetForm";
 
 export default function OwnerInformationForm(props: any) {
 
@@ -23,8 +24,8 @@ export default function OwnerInformationForm(props: any) {
     }, [])
     return (
         <div className="container">
-            <h2 className="mb-1">Owner Information</h2>
-            {!isEditOwner &&
+            {!isNewPet && <h2 className="mb-1">Owner Information</h2>}
+            {!isNewPet && !isEditOwner &&
                 <>
                     <Grid
                         items={owner} >
@@ -50,9 +51,9 @@ export default function OwnerInformationForm(props: any) {
                 isEditOwner && <OwnerForm {...owner} onDataSaved={onDataSaved} />
             }
 
-            <h2 className="mt-1">Pets</h2>
+            {!isNewPet && <h2 className="mt-1">Pets</h2>}
 
-            {owner.length > 0 && <Grid
+            {!isNewPet && owner.length > 0 && <Grid
                 items={owner[0].pets}
                 onActiveItemChanged={({ detail: { value } }) =>
                     setSelectedItems(value ? [value] : [])
@@ -60,6 +61,10 @@ export default function OwnerInformationForm(props: any) {
                 <GridColumn path="name" />
                 <GridColumn path="birthDate" />
             </Grid>}
+
+            {
+                isNewPet && <PetForm {...owner} />
+            }
         </div>
     )
 }

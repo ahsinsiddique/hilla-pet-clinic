@@ -9,39 +9,50 @@ import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owne
 import { PetEndpoint } from 'Frontend/generated/endpoints';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import { Select } from '@hilla/react-components/Select.js';
-import { DatePicker } from '@hilla/react-components/DatePicker.js';
+import { DatePicker, DatePickerDate } from '@hilla/react-components/DatePicker.js';
 import PetType from 'Frontend/generated/com/petclinic/application/data/entity/owner/PetType';
+import Pet from 'Frontend/generated/com/petclinic/application/data/entity/owner/Pet';
+import dateFnsFormat from 'date-fns/format';
 
 export default function PetForm(props: any) {
-    const [petTypes, setPetTypes] = useState([] as Array<PetType> | any);
-    let ownerInitialValues = props[0] ? props[0] : {
+    const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<PetType> | any);
+    const [petTypesData, setPetTypesData] = useState([] as Array<PetType> | any);
+    const [owner, setOwner] = useState({} as Owner);
+    let formInitialValues: any = {
         name: '', birthDate: '', type: ''
     }
-
     const fetchPetTypes = async () => {
-        const types: any = await PetEndpoint.populatePetTypes();
-        const data = types.map((type: any) => { return { label: type.name, value: type.name } })
-        setPetTypes(data);
+        let petTypeApiData = await PetEndpoint.populatePetTypes();
+        let types = JSON.parse(JSON.stringify(petTypeApiData))
+        types = types.map((type: any) => { return { label: type.name, value: type.name } })
+        setPetTypesDropdownData(types);
+        setPetTypesData(petTypeApiData);
 
     }
     useEffect(() => {
+        setOwner(props[0]);
         fetchPetTypes();
-        ownerInitialValues = props[0];
+        //   formInitialValues = props[0];
     }, [props]);
 
     let formik: any = useFormik({
-        initialValues: ownerInitialValues,
-        onSubmit: async (values: Owner, { setSubmitting, setErrors, setStatus }) => {
+        initialValues: formInitialValues,
+        onSubmit: async (values: Pet, { setSubmitting, setErrors, setStatus }) => {
             try {
                 // if (props && props[0]) {
-                //     (await OwnerEndpoint.initUpdateOwnerForm(values)) ?? values;
+                let petForm: any = { name: values.name };
+                const petType = petTypesData.filter((type: any) => type.name === values.type);
+
+                petForm['type'] = petType[0];
+                petForm['birthDate'] = formatDateIso8601(values.birthDate);
+                (await PetEndpoint.processPetCreationForm(owner, petForm)) ?? values;
                 // }
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {
                     const errors: FormikErrors<Owner> = {};
                     for (const error of e.validationErrorData) {
-                        if (typeof error.parameterName === 'string' && (error.parameterName in ownerInitialValues)) {
+                        if (typeof error.parameterName === 'string' && (error.parameterName in formInitialValues)) {
                             const key = error.parameterName as string & keyof Owner;
                             errors[key] = error.message.substring(error.message.indexOf("validation error:"));
                         }
@@ -54,11 +65,20 @@ export default function PetForm(props: any) {
         },
     });
 
+    const formatDateIso8601 = (dateParts: any): string => {
+        const date = new Date(dateParts);
+        return dateFnsFormat(date, 'yyyy-MM-dd');
+    };
+
     return (
-        <>
-            <VerticalLayout theme="spacing" style={{ alignItems: 'center', }}>
+        <>  
+         <div className='mt-1 container'>
+            <h3>Owner Name</h3> 
+            <h4 className='ml-1'>{owner.firstName + ' ' + owner.lastName}</h4>
+        </div>
+            <VerticalLayout theme="spacing" className='align-center'>
                 <TextField
-                    style={{ width: "20%" }}
+                    style={{ width: "30%" }}
                     name="name"
                     label="Name"
                     placeholder="Charlie"
@@ -69,7 +89,7 @@ export default function PetForm(props: any) {
                     invalid={formik.errors.name ? true : false}
                 ></TextField>
 
-                <DatePicker style={{ width: "20%" }}
+                <DatePicker style={{ width: "30%" }}
                     label="Birth date"
                     name="birthDate"
                     placeholder="mm/dd/yyyy"
@@ -80,14 +100,15 @@ export default function PetForm(props: any) {
                     invalid={formik.errors.birthDate ? true : false}
                 />
 
-                {<Select style={{ width: "20%" }}
+                {<Select style={{ width: "30%" }}
                     label="Type"
                     name='type'
                     placeholder='cat'
-                    items={petTypes}
+                    items={petTypesDropdownData}
                     errorMessage={formik.errors.type}
+                    onChange={formik.handleChange}
                     invalid={formik.errors.type ? true : false}
-                    value={petTypes && petTypes[0]?.name}
+                    value={formik.values.type}
                 />}
                 <Button theme="primary" onClick={formik.submitForm}
                     disabled={formik.isSubmitting}

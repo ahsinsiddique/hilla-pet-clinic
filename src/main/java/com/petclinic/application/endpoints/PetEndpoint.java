@@ -7,14 +7,9 @@ import com.petclinic.application.data.repository.OwnerRepository;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
 import jakarta.validation.Valid;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.rmi.AlreadyBoundException;
 import java.util.Collection;
 
 @Endpoint
