@@ -27,13 +27,11 @@ export default function OwnerForm(props: any) {
         initialValues: ownerInitialValues,
         onSubmit: async (values: Owner, { setSubmitting, setErrors, setStatus }) => {
             try {
-                console.log(values)
                 if (props && props[0]) {
                     (await OwnerEndpoint.initUpdateOwnerForm(values)) ?? values;
-
                     onDataSave(values);
                 } else {
-                    const saved = (await OwnerEndpoint.processCreationForm(values)) ?? values;
+                    (await OwnerEndpoint.processCreationForm(values)) ?? values;
                 }
                 formik.resetForm();
             } catch (e: unknown) {

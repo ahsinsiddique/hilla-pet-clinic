@@ -5,6 +5,10 @@ import Owner from "Frontend/generated/com/petclinic/application/data/entity/owne
 import { useEffect, useState } from "react";
 import OwnerForm from "./OwnerForm";
 import PetForm from "./PetForm";
+import { EmailField } from "@hilla/react-components/EmailField.js";
+import { VerticalLayout } from "@hilla/react-components/VerticalLayout.js";
+import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
+import { TextField } from "@hilla/react-components/TextField.js";
 
 export default function OwnerInformationForm(props: any) {
 
@@ -24,20 +28,47 @@ export default function OwnerInformationForm(props: any) {
     }, [])
     return (
         <div className="container">
-            {!isNewPet && <h2 className="mb-1">Owner Information</h2>}
+            {!isNewPet && <h2 className="mb-2">Owner Information</h2>}
             {!isNewPet && !isEditOwner &&
                 <>
-                    <Grid
-                        items={owner} >
-                        <GridColumn header="Name" >
-                            {({ item }) => <span>{item.firstName + ' ' + item.lastName}</span>}
-                        </GridColumn>
-                        <GridColumn path="email" />
-                        <GridColumn path="address" />
-                        <GridColumn path="telephone" />
-                    </Grid>
+                    {owner.length > 0 &&
+                        <>
+                            <HorizontalLayout className="align-center" theme="spacing">
+                                <TextField
+                                    style={{ width: "30%" }}
+                                    name="name"
+                                    label="Name"
+                                    value={owner && owner[0].firstName}
+                                    readonly
+                                ></TextField>
+                                <TextField
+                                    style={{ width: "30%" }}
+                                    name="address"
+                                    label="Address"
+                                    value={owner && owner[0].address}
+                                    readonly
+                                ></TextField>
+                            </HorizontalLayout>
+                            <HorizontalLayout className="align-center" theme="spacing">
+                                <TextField
+                                    style={{ width: "30%" }}
+                                    name="city"
+                                    label="City"
+                                    value={owner && owner[0].city}
+                                    readonly
+                                ></TextField>
+                                <TextField
+                                    style={{ width: "30%" }}
+                                    name="telephone"
+                                    label="telephone"
+                                    value={owner && owner[0].telephone}
+                                    readonly
+                                ></TextField>
+                            </HorizontalLayout>
+                        </>
+                    }
 
-                    <div className="mt-1">
+                    <div className="mt-1 align-center">
                         <Button theme="primary" onClick={() => setIsEditOwner(true)}
                         >Update Owner</Button>
                         <Button theme="primary" style={{ marginLeft: '1rem' }} onClick={() => setIsNewPet(true)}
