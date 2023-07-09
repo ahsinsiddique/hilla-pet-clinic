@@ -5,8 +5,6 @@ import Owner from "Frontend/generated/com/petclinic/application/data/entity/owne
 import { useEffect, useState } from "react";
 import OwnerForm from "./OwnerForm";
 import PetForm from "./PetForm";
-import { EmailField } from "@hilla/react-components/EmailField.js";
-import { VerticalLayout } from "@hilla/react-components/VerticalLayout.js";
 import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
 import { TextField } from "@hilla/react-components/TextField.js";
 

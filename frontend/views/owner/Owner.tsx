@@ -20,7 +20,7 @@ export default function OwnerView() {
     return (
         <>
             {!isAddNewOwner && !selectedItems &&
-                <>
+                <div className="container mt-2">
                     <Button className="mb-1" theme="primary" onClick={() => setIsAddNewOwner(true)}
                     >Add New Owner</Button>
                     <Grid
@@ -40,7 +40,7 @@ export default function OwnerView() {
                         <GridColumn path="address" />
                         <GridColumn path="telephone" />
                     </Grid>
-                </>
+                </div>
             }
             {isAddNewOwner &&
                 <OwnerForm />
