@@ -4,7 +4,7 @@ import { GridColumn } from "@hilla/react-components/GridColumn.js";
 import Owner from "Frontend/generated/com/petclinic/application/data/entity/owner/Owner";
 import { useEffect, useState } from "react";
 import OwnerForm from "./OwnerForm";
-import PetForm from "./PetForm";
+import PetForm from "../pet/PetForm";
 import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
 import { TextField } from "@hilla/react-components/TextField.js";
 
