@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import OwnerForm from "./OwnerForm";
 import { Button } from "@hilla/react-components/Button.js";
 import OwnerInformationForm from "./OwnerInformationForm";
+import Owner from "Frontend/generated/com/petclinic/application/data/entity/owner/Owner";
 
 export default function OwnerView() {
     const [owners, setOwners] = useState([]);
@@ -16,7 +17,13 @@ export default function OwnerView() {
     }
     useEffect(() => {
         fetchData();
-    }, [])
+    }, []);
+
+    const onDataSaved = (owner: Owner) => {
+        setIsAddNewOwner(false);
+        fetchData();
+    }
+
     return (
         <>
             {!isAddNewOwner && !selectedItems &&
@@ -43,7 +50,7 @@ export default function OwnerView() {
                 </div>
             }
             {isAddNewOwner &&
-                <OwnerForm />
+                <OwnerForm onDataSaved={onDataSaved}  />
             }
             {selectedItems && !isAddNewOwner &&
                 <OwnerInformationForm owner={{ selectedItems }} />

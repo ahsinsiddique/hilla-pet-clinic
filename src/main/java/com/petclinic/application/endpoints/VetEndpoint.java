@@ -14,8 +14,6 @@ public class VetEndpoint {
     private VetRepository vetRepository;
 
     Vets showResourcesVetList() {
-        // Here we are returning an object of type 'Vets' rather than a collection of Vet
-        // objects so it is simpler for JSon/Object mapping
         Vets vets = new Vets();
         vets.getVetList().addAll(this.vetRepository.findAll());
         return vets;

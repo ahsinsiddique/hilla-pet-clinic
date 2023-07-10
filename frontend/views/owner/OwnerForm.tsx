@@ -13,7 +13,7 @@ import { EmailField } from '@hilla/react-components/EmailField.js';
 export default function OwnerForm(props: any) {
     let ownerInitialValues = props[0] ? props[0] : {
         firstName: '', lastName: '', address: '',
-        city: '', telephone: '', email: '', type: '', new: true, version: 1, id: 1
+        city: '', telephone: '', email: '', type: '', isNew: true, version: 1
     }
 
     const onDataSave = (data: Owner) => {
@@ -29,10 +29,10 @@ export default function OwnerForm(props: any) {
             try {
                 if (props && props[0]) {
                     (await OwnerEndpoint.initUpdateOwnerForm(values)) ?? values;
-                    onDataSave(values);
                 } else {
                     (await OwnerEndpoint.processCreationForm(values)) ?? values;
                 }
+                onDataSave(values);
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {
@@ -119,14 +119,7 @@ export default function OwnerForm(props: any) {
                     placeholder="Telephone"
                     invalid={formik.errors.telephone ? true : false}
                 />
-                {/* <Select style={{ width: "20%" }}
-                    label="Type"
-                    name='type'
-                    items={criteria}
-                    errorMessage={formik.errors.type}
-                    invalid={formik.errors.telephone ? true : false}
-                    value={criteria && criteria[0]?.value}
-                /> */}
+        
                 <Button theme="primary" onClick={formik.submitForm}
                     disabled={formik.isSubmitting}
                 >Save</Button>

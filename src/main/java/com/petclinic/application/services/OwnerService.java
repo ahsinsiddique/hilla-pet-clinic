@@ -2,8 +2,10 @@ package com.petclinic.application.services;
 
 import com.petclinic.application.data.entity.owner.Owner;
 import com.petclinic.application.data.repository.OwnerRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,7 +16,7 @@ public class OwnerService {
         this.ownerRepository = ownerR;
     }
 
-    public Owner saveOwner(Owner model) {
+    public Owner updateOwner(Owner model) {
         Optional<Owner> owner = this.ownerRepository.findById(model.getId());
         if (owner.isPresent()) {
             Owner _owner = owner.get();
@@ -29,5 +31,17 @@ public class OwnerService {
         } else {
             return null;
         }
+    }
+
+    public Owner saveOwner(Owner model) {
+        model.isNew();
+        return this.ownerRepository.save(model);
+    }
+
+    public Owner findOwner(Integer ownerId) {
+        return ownerId == null ? new Owner() : this.ownerRepository.findById(ownerId);
+    }
+    public List<Owner> getAllOwners() {
+        return this.ownerRepository.findAll();
     }
 }

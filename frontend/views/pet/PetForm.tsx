@@ -9,7 +9,7 @@ import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owne
 import { PetEndpoint } from 'Frontend/generated/endpoints';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import { Select } from '@hilla/react-components/Select.js';
-import { DatePicker, DatePickerDate } from '@hilla/react-components/DatePicker.js';
+import { DatePicker } from '@hilla/react-components/DatePicker.js';
 import PetType from 'Frontend/generated/com/petclinic/application/data/entity/owner/PetType';
 import Pet from 'Frontend/generated/com/petclinic/application/data/entity/owner/Pet';
 import dateFnsFormat from 'date-fns/format';
@@ -34,7 +34,9 @@ export default function PetForm(props: any) {
         fetchPetTypes();
         //   formInitialValues = props[0];
     }, [props]);
-
+    const onDataSave = (data: Owner) => {
+        props.onDataSaved(data);
+    };
     let formik: any = useFormik({
         initialValues: formInitialValues,
         onSubmit: async (values: Pet, { setSubmitting, setErrors, setStatus }) => {
@@ -47,6 +49,7 @@ export default function PetForm(props: any) {
                 petForm['birthDate'] = formatDateIso8601(values.birthDate);
                 (await PetEndpoint.processPetCreationForm(owner, petForm)) ?? values;
                 // }
+                onDataSave(values);
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {

@@ -76,24 +76,21 @@ export default function OwnerInformationForm(props: any) {
 
             }
 
-            {
-                isEditOwner && <OwnerForm {...owner} onDataSaved={onDataSaved} />
-            }
-
-            {!isNewPet && <h2 className="mt-1">Pets</h2>}
-
-            {!isNewPet && owner.length > 0 && <Grid
-                items={owner[0].pets}
-                onActiveItemChanged={({ detail: { value } }) =>
-                    setSelectedItems(value ? [value] : [])
-                }  >
-                <GridColumn path="name" />
-                <GridColumn path="birthDate" />
-            </Grid>}
-
-            {
-                isNewPet && <PetForm {...owner} />
-            }
+            {isEditOwner && <OwnerForm {...owner} onDataSaved={onDataSaved} />}
+            
+            {!isNewPet && owner.length > 0 &&
+                <>
+                    <h2 className="mt-1">Pets</h2>
+                    <Grid
+                        items={owner[0].pets}
+                        onActiveItemChanged={({ detail: { value } }) =>
+                            setSelectedItems(value ? [value] : [])
+                        }  >
+                        <GridColumn path="name" />
+                        <GridColumn path="birthDate" />
+                    </Grid>
+                </>}
+            {isNewPet && <PetForm {...owner} />}
         </div>
     )
 }
