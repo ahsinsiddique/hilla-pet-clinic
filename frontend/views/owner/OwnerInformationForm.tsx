@@ -7,18 +7,23 @@ import OwnerForm from "./OwnerForm";
 import PetForm from "../pet/PetForm";
 import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
 import { TextField } from "@hilla/react-components/TextField.js";
+import Pet from "Frontend/generated/com/petclinic/application/data/entity/owner/Pet";
 
 export default function OwnerInformationForm(props: any) {
 
-    const [owner, setOwner] = useState([] as Array<Owner>);
+    const [owner, setOwner] = useState([] as Array<Owner> | any);
     const [isEditOwner, setIsEditOwner] = useState(false);
     const [isNewPet, setIsNewPet] = useState(false);
+
     const setSelectedItems = (event: any) => {
-        console.log(event)
+        owner[0].selectedPet = event;
+        setOwner(owner);
+        setIsNewPet(true);
     }
 
     const onDataSaved = (owner: Owner) => {
         setIsEditOwner(false);
+        setIsNewPet(false);
         setOwner([owner]);
     }
     useEffect(() => {
@@ -75,10 +80,9 @@ export default function OwnerInformationForm(props: any) {
                 </>
 
             }
-
             {isEditOwner && <OwnerForm {...owner} onDataSaved={onDataSaved} />}
-            
-            {!isNewPet && owner.length > 0 &&
+
+            {!isNewPet && !isEditOwner && owner.length > 0 &&
                 <>
                     <h2 className="mt-1">Pets</h2>
                     <Grid
@@ -90,7 +94,8 @@ export default function OwnerInformationForm(props: any) {
                         <GridColumn path="birthDate" />
                     </Grid>
                 </>}
-            {isNewPet && <PetForm {...owner} />}
+            {(isNewPet || (owner.length > 0 && owner[0].selectedPet && owner[0].selectedPet.length > 0)) &&
+             <PetForm {...owner} onDataSaved={onDataSaved} />}
         </div>
     )
 }

@@ -43,4 +43,9 @@ public class PetEndpoint {
         return this.ownerRepository.save(owner);
     }
 
+    public Owner processUpdateForm(@Valid Pet pet, Owner owner) {
+        owner.addPet(pet);
+        return ownerRepository.save(owner);
+    }
+
 }

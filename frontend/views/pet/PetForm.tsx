@@ -18,13 +18,22 @@ export default function PetForm(props: any) {
     const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<PetType> | any);
     const [petTypesData, setPetTypesData] = useState([] as Array<PetType> | any);
     const [owner, setOwner] = useState({} as Owner);
-    let formInitialValues: any = {
-        name: '', birthDate: '', type: ''
+
+    // set pet details
+    let selectedPet: any;
+    if (props[0] && props[0].selectedPet) {
+        selectedPet = props[0].selectedPet[0];
     }
+    // set form initial values
+    let formInitialValues: any = {
+        name: selectedPet ? selectedPet.name : '', birthDate: selectedPet ? selectedPet.birthDate : '',
+        type: selectedPet ? selectedPet.type.name : ''
+    }
+    // get pet types dropdown data
     const fetchPetTypes = async () => {
         let petTypeApiData = await PetEndpoint.populatePetTypes();
         let types = JSON.parse(JSON.stringify(petTypeApiData))
-        types = types.map((type: any) => { return { label: type.name, value: type.name } })
+        types = types.map((type: any) => { return { label: type.name, value: type.name } });
         setPetTypesDropdownData(types);
         setPetTypesData(petTypeApiData);
 
@@ -32,8 +41,9 @@ export default function PetForm(props: any) {
     useEffect(() => {
         setOwner(props[0]);
         fetchPetTypes();
-        //   formInitialValues = props[0];
     }, [props]);
+
+    //  reset page state after submitting form
     const onDataSave = (data: Owner) => {
         props.onDataSaved(data);
     };
@@ -41,15 +51,23 @@ export default function PetForm(props: any) {
         initialValues: formInitialValues,
         onSubmit: async (values: Pet, { setSubmitting, setErrors, setStatus }) => {
             try {
-                // if (props && props[0]) {
-                let petForm: any = { name: values.name };
-                const petType = petTypesData.filter((type: any) => type.name === values.type);
+                if (props && props[0].selectedPet) {
+                    let pet = selectedPet;
+                    pet.name = values.name;
+                    pet.birthDate = values.birthDate;
+                    pet.type = petTypesData.filter((type: any) => type.name === values.type)[0];
+                    // update pet details params as Pet pet, Owner owner
+                    const _owner: any = await PetEndpoint.processUpdateForm(pet, owner) ?? values;
+                    onDataSave(_owner);
+                } else {
+                    let petForm: any = { name: values.name };
+                    const petType = petTypesData.filter((type: any) => type.name === values.type);
+                    petForm['type'] = petType[0];
+                    petForm['birthDate'] = formatDateIso8601(values.birthDate);
+                    const _owner: any = await PetEndpoint.processPetCreationForm(owner, petForm) ?? values;
+                    onDataSave(_owner);
+                }
 
-                petForm['type'] = petType[0];
-                petForm['birthDate'] = formatDateIso8601(values.birthDate);
-                (await PetEndpoint.processPetCreationForm(owner, petForm)) ?? values;
-                // }
-                onDataSave(values);
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {
@@ -74,11 +92,11 @@ export default function PetForm(props: any) {
     };
 
     return (
-        <>  
-         <div className='mt-1 container'>
-            <h3>Owner Name</h3> 
-            <h4 className='ml-1'>{owner.firstName + ' ' + owner.lastName}</h4>
-        </div>
+        <>
+            <div className='mt-1 container'>
+                <h3>Owner Name</h3>
+                <h4 className='ml-1'>{owner.firstName + ' ' + owner.lastName}</h4>
+            </div>
             <VerticalLayout theme="spacing" className='align-center'>
                 <TextField
                     style={{ width: "30%" }}

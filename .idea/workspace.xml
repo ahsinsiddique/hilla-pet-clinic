@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/pet/PetForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/pet/PetForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/Company.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/Contact.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/ContactRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/OwnerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/OwnerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VetEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VetEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/services/OwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/services/OwnerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +63,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
