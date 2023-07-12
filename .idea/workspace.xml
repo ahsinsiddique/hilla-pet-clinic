@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/themes/hilla-pet-clinic/utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/views/pet/PetVisit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/views/pet/PetVisitForm.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VisitEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
@@ -130,39 +133,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VisitEndpoint.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
           <line>85</line>
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

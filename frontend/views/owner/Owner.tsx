@@ -36,10 +36,6 @@ export default function OwnerView() {
                         onActiveItemChanged={({ detail: { value } }) =>
                             setSelectedItems(value ? [value] : [])
                         }  >
-
-                        <GridColumn header="#">
-                            {({ item }) => <span>{item.id}</span>}
-                        </GridColumn>
                         <GridColumn header="Name" >
                             {({ item }) => <span className="color-link">{item.firstName + ' ' + item.lastName}</span>}
                         </GridColumn>
@@ -50,7 +46,7 @@ export default function OwnerView() {
                 </div>
             }
             {isAddNewOwner &&
-                <OwnerForm onDataSaved={onDataSaved}  />
+                <OwnerForm onDataSaved={onDataSaved} />
             }
             {selectedItems && !isAddNewOwner &&
                 <OwnerInformationForm owner={{ selectedItems }} />

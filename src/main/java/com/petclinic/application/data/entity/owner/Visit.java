@@ -22,9 +22,6 @@ public class Visit extends AbstractEntity {
 	@NotEmpty
 	private String description;
 
-	/**
-	 * Creates a new instance of Visit for the current date
-	 */
 	public Visit() {
 		this.date = LocalDate.now();
 	}
