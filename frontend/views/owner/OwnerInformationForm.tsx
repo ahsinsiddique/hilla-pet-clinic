@@ -7,13 +7,14 @@ import OwnerForm from "./OwnerForm";
 import PetForm from "../pet/PetForm";
 import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
 import { TextField } from "@hilla/react-components/TextField.js";
-import Pet from "Frontend/generated/com/petclinic/application/data/entity/owner/Pet";
+import { Link } from "react-router-dom";
 
 export default function OwnerInformationForm(props: any) {
 
     const [owner, setOwner] = useState([] as Array<Owner> | any);
     const [isEditOwner, setIsEditOwner] = useState(false);
     const [isNewPet, setIsNewPet] = useState(false);
+    const [isVisitPage, setVisitPageStatus] = useState(false);
 
     const setSelectedItems = (event: any) => {
         owner[0].selectedPet = event;
@@ -71,12 +72,16 @@ export default function OwnerInformationForm(props: any) {
                         </>
                     }
 
-                    <div className="mt-1 align-center">
+                    {!isVisitPage && <div className="mt-1 align-center">
                         <Button theme="primary" onClick={() => setIsEditOwner(true)}
                         >Update Owner</Button>
                         <Button theme="primary" style={{ marginLeft: '1rem' }} onClick={() => setIsNewPet(true)}
                         >Add New Pet</Button>
-                    </div>
+                        <Button theme="secondary" style={{ marginLeft: '1rem' }} onClick={() => setVisitPageStatus(true)}
+                        >
+                            <Link to={`/owner/${owner.length>0?owner[0].id: 1}/pets-visit-details`}>Pets Visit Details</Link>
+                        </Button>
+                    </div>}
                 </>
 
             }
@@ -90,12 +95,18 @@ export default function OwnerInformationForm(props: any) {
                         onActiveItemChanged={({ detail: { value } }) =>
                             setSelectedItems(value ? [value] : [])
                         }  >
-                        <GridColumn path="name" />
+                        <GridColumn header="Name" >
+                            {({ item }) => <span className="color-link">{item.name}</span>}
+                        </GridColumn>
+                        <GridColumn header="Pet Type" >
+                            {({ item }) => <span>{item.type.name}</span>}
+                        </GridColumn>
+
                         <GridColumn path="birthDate" />
                     </Grid>
                 </>}
             {(isNewPet || (owner.length > 0 && owner[0].selectedPet && owner[0].selectedPet.length > 0)) &&
-             <PetForm {...owner} onDataSaved={onDataSaved} />}
+                <PetForm {...owner} onDataSaved={onDataSaved} />}
         </div>
     )
 }

@@ -31,6 +31,7 @@ export default function VetView() {
                     {({ item }) => <span>{item.id}</span>}
                 </GridColumn>
                 <GridColumn path="firstName" />
+              
                 <GridColumn path="lastName" />
                 <GridColumn path="email" />
             </Grid>

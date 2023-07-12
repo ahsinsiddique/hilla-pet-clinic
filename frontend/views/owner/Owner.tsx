@@ -41,7 +41,7 @@ export default function OwnerView() {
                             {({ item }) => <span>{item.id}</span>}
                         </GridColumn>
                         <GridColumn header="Name" >
-                            {({ item }) => <span>{item.firstName + ' ' + item.lastName}</span>}
+                            {({ item }) => <span className="color-link">{item.firstName + ' ' + item.lastName}</span>}
                         </GridColumn>
                         <GridColumn path="email" />
                         <GridColumn path="address" />

@@ -13,6 +13,7 @@ import { DatePicker } from '@hilla/react-components/DatePicker.js';
 import PetType from 'Frontend/generated/com/petclinic/application/data/entity/owner/PetType';
 import Pet from 'Frontend/generated/com/petclinic/application/data/entity/owner/Pet';
 import dateFnsFormat from 'date-fns/format';
+import { formatDateIso8601 } from 'Frontend/themes/hilla-pet-clinic/utils';
 
 export default function PetForm(props: any) {
     const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<PetType> | any);
@@ -86,11 +87,6 @@ export default function PetForm(props: any) {
         },
     });
 
-    const formatDateIso8601 = (dateParts: any): string => {
-        const date = new Date(dateParts);
-        return dateFnsFormat(date, 'yyyy-MM-dd');
-    };
-
     return (
         <>
             <div className='mt-1 container'>
@@ -135,7 +131,6 @@ export default function PetForm(props: any) {
                     disabled={formik.isSubmitting}
                 >Save</Button>
             </VerticalLayout>
-
         </>
     );
 }

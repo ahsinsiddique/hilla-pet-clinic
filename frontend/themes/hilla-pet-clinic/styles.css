@@ -29,3 +29,8 @@
   justify-content: center;
   align-items: center;
 }
+
+.color-link {
+  color: rgb(51, 143, 201);
+  cursor: pointer;
+}
