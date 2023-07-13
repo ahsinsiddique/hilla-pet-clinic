@@ -77,10 +77,10 @@ export default function OwnerInformationForm(props: any) {
                         >Update Owner</Button>
                         <Button theme="primary" style={{ marginLeft: '1rem' }} onClick={() => setIsNewPet(true)}
                         >Add New Pet</Button>
-                        <Button theme="secondary" style={{ marginLeft: '1rem' }} onClick={() => setVisitPageStatus(true)}
+                        {owner.length > 0 && owner[0].pets.length > 0 && <Button theme="secondary" style={{ marginLeft: '1rem' }} onClick={() => setVisitPageStatus(true)}
                         >
-                            <Link to={`/owner/${owner.length>0?owner[0].id: 1}/pets-visit-details`}>Pets Visit Details</Link>
-                        </Button>
+                            <Link to={`/owner/${owner.length > 0 ? owner[0].id : 1}/pets-visit-details`}>Pets Visit Details</Link>
+                        </Button>}
                     </div>}
                 </>
 

@@ -63,7 +63,7 @@ export default function PetForm(props: any) {
                 } else {
                     let petForm: any = { name: values.name };
                     const petType = petTypesData.filter((type: any) => type.name === values.type);
-                    petForm['type'] = petType[0];
+                    petForm['type'] = petType.length>0?petType[0]: ''
                     petForm['birthDate'] = formatDateIso8601(values.birthDate);
                     const _owner: any = await PetEndpoint.processPetCreationForm(owner, petForm) ?? values;
                     onDataSave(_owner);
