@@ -25,9 +25,9 @@ export default function MenuOnLeftLayout() {
             <h3 style={{ marginLeft: "10rem" }} slot="navbar">
                 <img src="../themes/hilla-logo.png" alt="" style={{ width: "25px", paddingRight: "1rem" }} />Hilla Pet Clinic</h3>
             <Tabs slot="navbar" orientation="horizontal">
-                {menuRoutes.map(({ path, handle: { icon, title, isDisplayOnNavBar } }) => (
+                {menuRoutes.map(({ path, handle: { icon, title, isNotDisplayOnNavBar } }) => (
                     < Tab key={path} >
-                        {!isDisplayOnNavBar && <NavLink
+                        {!isNotDisplayOnNavBar && <NavLink
                             className={({ isActive }) => `${css.navlink} ${isActive ? css.navlink_active : ''}`}
                             key={path}
                             to={path}>

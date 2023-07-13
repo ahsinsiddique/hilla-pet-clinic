@@ -10,7 +10,7 @@ const AboutView = lazy(async () => import('Frontend/views/home/HomeView.js'));
 export type MenuProps = Readonly<{
   icon?: string;
   title?: string;
-  isDisplayOnNavBar?: boolean;
+  isNotDisplayOnNavBar?: boolean;
 }>;
 
 export type ViewMeta = Readonly<{ handle?: MenuProps }>;
@@ -39,8 +39,8 @@ export const routes: readonly ViewRouteObject[] = [
     children: [
       { path: '/', element: <HomeView />, handle: { icon: 'globe-solid', title: 'Home',  } },
       { path: '/vets', element: <VetView />, handle: { icon: 'user', title: 'Vets' } },
-      { path: '/owner', element: <OwnerView />, handle: { icon: 'user', title: 'Owner' } },
-      { path: '/owner/:ownerId/pets-visit-details', element: <PetVisit />, handle: { icon: 'star', title: 'Pet Visit', isDisplayOnNavBar: true } },
+      { path: '/owner', element: <OwnerView />, handle: { icon: 'user', title: 'Owner', } },
+      { path: '/owner/:ownerId/pets-visit-details', element: <PetVisit />, handle: { icon: 'star', title: 'Pet Visit', isNotDisplayOnNavBar: true } },
     ],
   },
 ];
