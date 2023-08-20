@@ -28,7 +28,7 @@ public interface OwnerRepository extends JpaRepository<Owner, Long> {
 	@Transactional(readOnly = true)
 	Owner findById(@Param("id") Integer id);
 
-	Owner save(Owner owner);
+//	Owner save(Owner owner);
 
 	/**
 	 * Returns all the owners from data store

@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/pet/PetForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/pet/PetForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/pet/PetVisit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/pet/PetVisit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/vet/vet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/vet/vet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/OwnerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/OwnerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +110,9 @@
       <workItem from="1687409689380" duration="415000" />
       <workItem from="1687869822068" duration="32411000" />
       <workItem from="1688537011786" duration="4930000" />
+      <workItem from="1689407266949" duration="1604000" />
+      <workItem from="1691675704190" duration="25000" />
+      <workItem from="1692198489681" duration="7229000" />
     </task>
     <servers />
   </component>
@@ -116,17 +130,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

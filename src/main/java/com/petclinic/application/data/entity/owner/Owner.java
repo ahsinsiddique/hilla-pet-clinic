@@ -2,6 +2,9 @@ package com.petclinic.application.data.entity.owner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.core.style.ToStringCreator;
@@ -10,6 +13,7 @@ import org.springframework.util.Assert;
 import com.petclinic.application.data.entity.Person;
 
 import jakarta.validation.constraints.Digits;
+
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
@@ -65,6 +69,17 @@ public class Owner extends Person {
             getPets().add(pet);
         }
     }
+    public void updatePet(Pet pet) {
+      List<Pet> pets = getPets();
+      Optional<Pet> updatePet = pets.stream().filter(_pet-> pet.getId().equals(_pet.getId())).findFirst();
+
+          if (updatePet.isPresent()) {
+              updatePet.get().setBirthDate(pet.getBirthDate());
+              updatePet.get().setName(pet.getName());
+              updatePet.get().setType(pet.getType());
+          }
+
+    }
 
     public Pet getPet(String name) {
         return getPet(name, false);
@@ -72,10 +87,10 @@ public class Owner extends Person {
 
     public Pet getPet(Integer id) {
         for (Pet pet : getPets()) {
-                Long compId = pet.getId();
-                if (compId.toString().equals(id.toString())) {
-                    return pet;
-                }
+            Long compId = pet.getId();
+            if (compId.toString().equals(id.toString())) {
+                return pet;
+            }
         }
         return null;
     }

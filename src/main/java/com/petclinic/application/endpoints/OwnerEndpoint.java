@@ -22,7 +22,7 @@ public class OwnerEndpoint {
         return this.ownerService.getAllOwners();
     }
 
-    public Owner findOwner(@PathVariable(name = "ownerId", required = false) Integer ownerId) {
+    public Owner findOwner(Integer ownerId) {
         return this.ownerService.findOwner(ownerId);
     }
 

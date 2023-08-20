@@ -44,7 +44,7 @@ public class PetEndpoint {
     }
 
     public Owner processUpdateForm(@Valid Pet pet, Owner owner) {
-        owner.addPet(pet);
+        owner.updatePet(pet);
         return ownerRepository.save(owner);
     }
 

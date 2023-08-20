@@ -1,5 +1,3 @@
-
-import { useEffect } from 'react';
 import { FormikErrors, useFormik } from 'formik';
 import { Button } from '@hilla/react-components/Button.js';
 import { TextField } from '@hilla/react-components/TextField.js';
@@ -9,9 +7,12 @@ import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owne
 import { OwnerEndpoint } from 'Frontend/generated/endpoints';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import { EmailField } from '@hilla/react-components/EmailField.js';
+import { useLocation } from 'react-router-dom';
 
 export default function OwnerForm(props: any) {
-    let ownerInitialValues = props[0] ? props[0] : {
+    const location = useLocation();
+    const owner = location.state;
+    let ownerInitialValues = owner ? owner : {
         firstName: '', lastName: '', address: '',
         city: '', telephone: '', email: '', type: '', isNew: true, version: 1
     }
@@ -19,15 +20,17 @@ export default function OwnerForm(props: any) {
     const onDataSave = (data: Owner) => {
         props.onDataSaved(data);
     };
-    useEffect(() => {
-        ownerInitialValues = props[0];
-    }, [props]);
+    // useEffect(() => {
+    //       const data: any = await OwnerEndpoint.findOwner(Number(ownerId));
+    //     setOwner(location.state[0]);
+    //     ownerInitialValues = props[0];
+    // }, [props]);
 
     let formik: any = useFormik({
         initialValues: ownerInitialValues,
         onSubmit: async (values: Owner, { setSubmitting, setErrors, setStatus }) => {
             try {
-                if (props && props[0]) {
+                if (owner && owner.id) {
                     (await OwnerEndpoint.initUpdateOwnerForm(values)) ?? values;
                 } else {
                     (await OwnerEndpoint.processCreationForm(values)) ?? values;
@@ -119,7 +122,7 @@ export default function OwnerForm(props: any) {
                     placeholder="Telephone"
                     invalid={formik.errors.telephone ? true : false}
                 />
-        
+
                 <Button theme="primary" onClick={formik.submitForm}
                     disabled={formik.isSubmitting}
                 >Save</Button>

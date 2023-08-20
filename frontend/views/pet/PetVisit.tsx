@@ -14,7 +14,6 @@ export default function PetVisit(props: any) {
 
     const { ownerId } = useParams();
 
-
     const setSelectedItems = (event: any) => {
         owner.selectedPetId = event.id;
         setSelectedPet(owner);
@@ -29,6 +28,7 @@ export default function PetVisit(props: any) {
         setOwner(data);
         setSelectedPet(data.pets.length > 0 ? data.pets[0] : []);
     }
+    
     useEffect(() => {
         fetchData();
     }, []);

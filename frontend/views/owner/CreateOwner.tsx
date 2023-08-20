@@ -6,7 +6,6 @@ import OwnerForm from "./OwnerForm";
 import { Button } from "@hilla/react-components/Button.js";
 import OwnerInformationForm from "./OwnerInformationForm";
 import Owner from "Frontend/generated/com/petclinic/application/data/entity/owner/Owner";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
 
 export default function OwnerView() {
     const [owners, setOwners] = useState([]);
@@ -24,12 +23,7 @@ export default function OwnerView() {
         setIsAddNewOwner(false);
         fetchData();
     }
-    const navigate = useNavigate();
 
-    const setSelectedOwner = (owners: Owner[]) => {
-        setSelectedItems(owners)
-        navigate(`/owner/details/${owners[0].id}`, {state: owners});
-    }
     return (
         <>
             {!isAddNewOwner && !selectedItems &&
@@ -40,7 +34,7 @@ export default function OwnerView() {
                         items={owners}
 
                         onActiveItemChanged={({ detail: { value } }) =>
-                            setSelectedOwner(value ? [value] : [])
+                            setSelectedItems(value ? [value] : [])
                         }  >
                         <GridColumn header="Name" >
                             {({ item }) => <span className="color-link">{item.firstName + ' ' + item.lastName}</span>}
@@ -54,9 +48,9 @@ export default function OwnerView() {
             {isAddNewOwner &&
                 <OwnerForm onDataSaved={onDataSaved} />
             }
-            {/* {selectedItems && !isAddNewOwner &&
+            {selectedItems && !isAddNewOwner &&
                 <OwnerInformationForm owner={{ selectedItems }} />
-            } */}
+            }
         </>
 
     );

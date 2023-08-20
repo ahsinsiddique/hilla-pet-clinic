@@ -27,9 +27,7 @@ export default function VetView() {
                     setSelectedItems(value ? [value] : [])
                 }
             >
-                <GridColumn header="#">
-                    {({ item }) => <span>{item.id}</span>}
-                </GridColumn>
+
                 <GridColumn path="firstName" />
               
                 <GridColumn path="lastName" />

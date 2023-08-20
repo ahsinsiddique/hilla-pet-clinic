@@ -12,38 +12,44 @@ import { Select } from '@hilla/react-components/Select.js';
 import { DatePicker } from '@hilla/react-components/DatePicker.js';
 import PetType from 'Frontend/generated/com/petclinic/application/data/entity/owner/PetType';
 import Pet from 'Frontend/generated/com/petclinic/application/data/entity/owner/Pet';
-import dateFnsFormat from 'date-fns/format';
 import { formatDateIso8601 } from 'Frontend/themes/hilla-pet-clinic/utils';
+import { useLocation, useParams } from 'react-router-dom';
 
 export default function PetForm(props: any) {
     const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<PetType> | any);
     const [petTypesData, setPetTypesData] = useState([] as Array<PetType> | any);
-    const [owner, setOwner] = useState({} as Owner);
-
+    const [owner, setOwner] = useState({} as Owner | any);
+    const location = useLocation();
+    const { petId } = useParams();
+    let _owner = location.state;
     // set pet details
-    let selectedPet: any;
-    if (props[0] && props[0].selectedPet) {
-        selectedPet = props[0].selectedPet[0];
-    }
+
+    // if (props[0] && props[0].selectedPet) {
+    //     selectedPet = props[0].selectedPet[0];
+    // }
     // set form initial values
-    let formInitialValues: any = {
-        name: selectedPet ? selectedPet.name : '', birthDate: selectedPet ? selectedPet.birthDate : '',
-        type: selectedPet ? selectedPet.type.name : ''
-    }
+
     // get pet types dropdown data
     const fetchPetTypes = async () => {
         let petTypeApiData = await PetEndpoint.populatePetTypes();
         let types = JSON.parse(JSON.stringify(petTypeApiData))
-        types = types.map((type: any) => { return { label: type.name, value: type.name } });
+        types = types.map((type: PetType) => { return { label: type.name, value: type.name } });
         setPetTypesDropdownData(types);
         setPetTypesData(petTypeApiData);
 
     }
     useEffect(() => {
-        setOwner(props[0]);
-        fetchPetTypes();
-    }, [props]);
+        setOwner(_owner);
+        //setOwner(props[0]);
 
+        fetchPetTypes();
+    }, []);
+
+    let selectedPet = _owner && _owner.id && petId && _owner.pets.filter((pet: Pet) => pet.id === Number(petId))[0];
+    let formInitialValues: any = {
+        name: selectedPet ? selectedPet.name : '', birthDate: selectedPet ? selectedPet.birthDate : '',
+        type: selectedPet ? selectedPet.type.name : ''
+    }
     //  reset page state after submitting form
     const onDataSave = (data: Owner) => {
         props.onDataSaved(data);
@@ -52,10 +58,10 @@ export default function PetForm(props: any) {
         initialValues: formInitialValues,
         onSubmit: async (values: Pet, { setSubmitting, setErrors, setStatus }) => {
             try {
-                if (props && props[0].selectedPet) {
-                    let pet = selectedPet;
+                if (petId) {
+                    let pet = owner.pets.filter((pet: Pet) => pet.id = Number(petId))[0];
                     pet.name = values.name;
-                    pet.birthDate = values.birthDate;
+                    pet.birthDate = formatDateIso8601(values.birthDate);
                     pet.type = petTypesData.filter((type: any) => type.name === values.type)[0];
                     // update pet details params as Pet pet, Owner owner
                     const _owner: any = await PetEndpoint.processUpdateForm(pet, owner) ?? values;
@@ -63,7 +69,7 @@ export default function PetForm(props: any) {
                 } else {
                     let petForm: any = { name: values.name };
                     const petType = petTypesData.filter((type: any) => type.name === values.type);
-                    petForm['type'] = petType.length>0?petType[0]: ''
+                    petForm['type'] = petType.length > 0 ? petType[0] : ''
                     petForm['birthDate'] = formatDateIso8601(values.birthDate);
                     const _owner: any = await PetEndpoint.processPetCreationForm(owner, petForm) ?? values;
                     onDataSave(_owner);
@@ -89,11 +95,12 @@ export default function PetForm(props: any) {
 
     return (
         <>
-            <div className='mt-1 container'>
-                <h3>Owner Name</h3>
-                <h4 className='ml-1'>{owner.firstName + ' ' + owner.lastName}</h4>
-            </div>
-            <VerticalLayout theme="spacing" className='align-center'>
+
+            {owner && owner.id && <VerticalLayout theme="spacing" className='align-center'>
+                <div className='mt-1 container'>
+                    <h3>Owner Name</h3>
+                    <h4 className='ml-1'>{owner.firstName + ' ' + owner.lastName}</h4>
+                </div>
                 <TextField
                     style={{ width: "30%" }}
                     name="name"
@@ -131,6 +138,7 @@ export default function PetForm(props: any) {
                     disabled={formik.isSubmitting}
                 >Save</Button>
             </VerticalLayout>
+            }
         </>
     );
 }
