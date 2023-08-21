@@ -1,5 +1,5 @@
 
-import OwnerView from "Frontend/views/owner/Owner";
+import OwnerView from "Frontend/views/owner/OwnerView";
 import './../../themes/hilla-pet-clinic/styles.css';
 export default function HomeView() {
     return (

@@ -1,7 +1,7 @@
 import MainLayout from 'Frontend/views/MainLayout.js';
 import { lazy } from 'react';
 import { createBrowserRouter, IndexRouteObject, NonIndexRouteObject, useMatches } from 'react-router-dom';
-import OwnerView from './views/owner/Owner';
+import OwnerView from './views/owner/OwnerView';
 import VetView from "Frontend/views/vet/vet";
 import HomeView from "Frontend/views/home/HomeView";
 import PetVisit from './views/pet/PetVisit';
@@ -42,9 +42,10 @@ export const routes: readonly ViewRouteObject[] = [
     handle: { icon: 'null', title: 'Main' },
     children: [
       { path: '/', element: <HomeView />, handle: { icon: 'vaadin:home-o', title: 'Home',  } },
-      { path: '/vets', element: <VetView />, handle: { icon: 'lumo:user', title: 'Vets' } },
       { path: '/owner', element: <OwnerView />, handle: { icon: 'lumo:user', title: 'Owner', } },
-      { path: '/owner-form', element: <OwnerForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
+      { path: '/vets', element: <VetView />, handle: { icon: 'lumo:user', title: 'Vets' } },
+      { path: '/owner/:ownerId', element: <OwnerForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
+      { path: '/owner/new', element: <OwnerForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
       { path: '/pet/:petId', element: <PetForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
       { path: '/pet/new', element: <PetForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
       { path: '/owner/details/:ownerId', element: <OwnerInformationForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },

@@ -1,33 +1,26 @@
-
-import { useEffect, useState } from 'react';
-import { FormikErrors, useFormik } from 'formik';
-import { Button } from '@hilla/react-components/Button.js';
-import { TextField } from '@hilla/react-components/TextField.js';
-
 import { EndpointValidationError } from '@hilla/frontend';
-import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owner/Owner';
-import { PetEndpoint } from 'Frontend/generated/endpoints';
-import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
-import { Select } from '@hilla/react-components/Select.js';
+import { Button } from '@hilla/react-components/Button.js';
 import { DatePicker } from '@hilla/react-components/DatePicker.js';
-import PetType from 'Frontend/generated/com/petclinic/application/data/entity/owner/PetType';
+import { Select } from '@hilla/react-components/Select.js';
+import { TextField } from '@hilla/react-components/TextField.js';
+import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
+import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owner/Owner';
 import Pet from 'Frontend/generated/com/petclinic/application/data/entity/owner/Pet';
+import PetType from 'Frontend/generated/com/petclinic/application/data/entity/owner/PetType';
+import { PetEndpoint } from 'Frontend/generated/endpoints';
 import { formatDateIso8601 } from 'Frontend/themes/hilla-pet-clinic/utils';
-import { useLocation, useParams } from 'react-router-dom';
+import { FormikErrors, useFormik } from 'formik';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-export default function PetForm(props: any) {
+export default function PetForm() {
     const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<PetType> | any);
     const [petTypesData, setPetTypesData] = useState([] as Array<PetType> | any);
     const [owner, setOwner] = useState({} as Owner | any);
     const location = useLocation();
     const { petId } = useParams();
+    const navigete = useNavigate();
     let _owner = location.state;
-    // set pet details
-
-    // if (props[0] && props[0].selectedPet) {
-    //     selectedPet = props[0].selectedPet[0];
-    // }
-    // set form initial values
 
     // get pet types dropdown data
     const fetchPetTypes = async () => {
@@ -40,19 +33,18 @@ export default function PetForm(props: any) {
     }
     useEffect(() => {
         setOwner(_owner);
-        //setOwner(props[0]);
-
         fetchPetTypes();
     }, []);
 
-    let selectedPet = _owner && _owner.id && petId && _owner.pets.filter((pet: Pet) => pet.id === Number(petId))[0];
+    let selectedPet = _owner.id &&
+        petId && _owner.pets.filter((pet: Pet) => pet.id === Number(petId))[0];
     let formInitialValues: any = {
         name: selectedPet ? selectedPet.name : '', birthDate: selectedPet ? selectedPet.birthDate : '',
         type: selectedPet ? selectedPet.type.name : ''
     }
     //  reset page state after submitting form
     const onDataSave = (data: Owner) => {
-        props.onDataSaved(data);
+        navigete(`/owner/details/${_owner.id}`);
     };
     let formik: any = useFormik({
         initialValues: formInitialValues,

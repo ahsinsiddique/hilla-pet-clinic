@@ -1,30 +1,22 @@
-import { FormikErrors, useFormik } from 'formik';
 import { Button } from '@hilla/react-components/Button.js';
 import { TextField } from '@hilla/react-components/TextField.js';
+import { FormikErrors, useFormik } from 'formik';
 
 import { EndpointValidationError } from '@hilla/frontend';
+import { EmailField } from '@hilla/react-components/EmailField.js';
+import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owner/Owner';
 import { OwnerEndpoint } from 'Frontend/generated/endpoints';
-import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
-import { EmailField } from '@hilla/react-components/EmailField.js';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function OwnerForm(props: any) {
+export default function OwnerForm() {
     const location = useLocation();
+    const navigate = useNavigate();
     const owner = location.state;
     let ownerInitialValues = owner ? owner : {
         firstName: '', lastName: '', address: '',
         city: '', telephone: '', email: '', type: '', isNew: true, version: 1
     }
-
-    const onDataSave = (data: Owner) => {
-        props.onDataSaved(data);
-    };
-    // useEffect(() => {
-    //       const data: any = await OwnerEndpoint.findOwner(Number(ownerId));
-    //     setOwner(location.state[0]);
-    //     ownerInitialValues = props[0];
-    // }, [props]);
 
     let formik: any = useFormik({
         initialValues: ownerInitialValues,
@@ -32,10 +24,12 @@ export default function OwnerForm(props: any) {
             try {
                 if (owner && owner.id) {
                     (await OwnerEndpoint.initUpdateOwnerForm(values)) ?? values;
+                    navigate(`/owner/details/${owner.id}`)
                 } else {
                     (await OwnerEndpoint.processCreationForm(values)) ?? values;
+                    navigate(`/owner`)
+
                 }
-                onDataSave(values);
                 formik.resetForm();
             } catch (e: unknown) {
                 if (e instanceof EndpointValidationError) {

@@ -1,13 +1,13 @@
 import { AppLayout } from '@hilla/react-components/AppLayout.js';
-import Placeholder from 'Frontend/components/placeholder/Placeholder.js';
-import { MenuProps, routes, useViewMatches, ViewRouteObject } from 'Frontend/routes.js';
-import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Icon } from "@hilla/react-components/Icon.js";
 import { Tab } from "@hilla/react-components/Tab.js";
 import { Tabs } from "@hilla/react-components/Tabs.js";
-import { Icon } from "@hilla/react-components/Icon.js";
-import '@vaadin/icons'
+import '@vaadin/icons';
 import '@vaadin/vaadin-lumo-styles/vaadin-iconset.js';
+import Placeholder from 'Frontend/components/placeholder/Placeholder.js';
+import { MenuProps, routes, ViewRouteObject } from 'Frontend/routes.js';
+import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
 type MenuRoute = ViewRouteObject &
     Readonly<{
@@ -16,7 +16,6 @@ type MenuRoute = ViewRouteObject &
     }>;
 
 export default function MenuOnLeftLayout() {
-    const matches = useViewMatches();
     const menuRoutes = (routes[0]?.children || []) as readonly MenuRoute[];
 
     return (

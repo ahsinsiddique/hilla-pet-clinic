@@ -1,22 +1,19 @@
 import { Grid } from "@hilla/react-components/Grid.js";
 import { GridColumn } from "@hilla/react-components/GridColumn.js";
 import Owner from "Frontend/generated/com/petclinic/application/data/entity/owner/Owner";
+import Pet from "Frontend/generated/com/petclinic/application/data/entity/owner/Pet";
+import { OwnerEndpoint } from "Frontend/generated/endpoints";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { OwnerEndpoint } from "Frontend/generated/endpoints";
-import Pet from "Frontend/generated/com/petclinic/application/data/entity/owner/Pet";
 import PetVisitForm from "./PetVisitForm";
 
-export default function PetVisit(props: any) {
-
+export default function PetVisit() {
     const [owner, setOwner] = useState({} as Owner | any);
     const [selectedPet, setSelectedPet] = useState({} as Pet | any);
-
     const { ownerId } = useParams();
 
     const setSelectedItems = (event: any) => {
         owner.selectedPetId = event.id;
-        setSelectedPet(owner);
         setSelectedPet(event);
     }
     const onDataSaved = (owner: Owner | any) => {
