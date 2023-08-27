@@ -28,10 +28,10 @@ export default function OwnerInformationForm() {
     }, [])
     return (
         <div className="container">
-            <h2 className="mb-2">Owner Information</h2>
+            <h2>Owner Information</h2>
             {owner && owner.id &&
                 <>
-                    <HorizontalLayout className="align-center" theme="spacing">
+                    <HorizontalLayout  className="align-center" theme="spacing">
                         <TextField
                             style={{ width: "30%" }}
                             name="name"
@@ -65,7 +65,7 @@ export default function OwnerInformationForm() {
                     </HorizontalLayout>
                 </>}
 
-            <div className="mt-1 align-center">
+            <HorizontalLayout theme="margin" className="align-center">
                 <Button theme="primary" onClick={() => navigate(`/owner/${owner.id}`, { state: owner })}>Update Owner
                 </Button>
                 <Button theme="primary" style={{ marginLeft: '1rem' }}
@@ -76,11 +76,11 @@ export default function OwnerInformationForm() {
                         style={{ marginLeft: '1rem' }}
                         onClick={() => navigate(`/owner/${owner.id}/pets-visit-details`)}>Pets Visit Details
                     </Button>}
-            </div>
+            </HorizontalLayout>
 
             {owner.id &&
                 <>
-                    <h2 className="mt-1">Pets</h2>
+                    <h2>Pets</h2>
                     <Grid
                         items={owner.pets}
                         onActiveItemChanged={({ detail: { value } }) =>

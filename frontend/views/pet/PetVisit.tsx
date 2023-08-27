@@ -6,12 +6,13 @@ import { OwnerEndpoint } from "Frontend/generated/endpoints";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PetVisitForm from "./PetVisitForm";
+import { HorizontalLayout } from "@hilla/react-components/HorizontalLayout.js";
 
 export default function PetVisit() {
     const [owner, setOwner] = useState({} as Owner);
     const [selectedPet, setSelectedPet] = useState({} as Pet);
     const { ownerId } = useParams();
-    
+
     const onDataSaved = (owner: Owner) => {
         const pet = owner.pets?.find((pet) => pet && pet.id === selectedPet.id);
         setOwner(owner);
@@ -28,15 +29,20 @@ export default function PetVisit() {
         fetchData();
     }, []);
     return (
-        <div className="container mt-2">
+        <div className="container">
             <h3>Owner Name</h3>
-            {owner && <h4 className="color-link ml-1">{owner.firstName + ' ' + owner.lastName}</h4>}
+            {owner &&
+                <HorizontalLayout theme="spacing margin">
+                    <h4 className="color-link">{owner.firstName + ' ' + owner.lastName}</h4>
+                </HorizontalLayout>
+            }
             {/* Owner pets grid */}
             <>
                 {owner &&
                     <>
-                        <h2 className="mt-1 mb-1">Pets </h2>
+                        <HorizontalLayout theme="spacing margin"><h3>Pets</h3> </HorizontalLayout>
                         <Grid
+                            theme="spacing"
                             items={owner.pets}
                             onActiveItemChanged={({ detail: { value } }) =>
                                 setSelectedPet(value as Pet)
@@ -53,8 +59,8 @@ export default function PetVisit() {
                     </>
                 }
             </>
-            <h3 className="mt-1">Pet Name</h3>
-            {selectedPet && selectedPet.id && <h4 className="ml-1 color-link">{selectedPet.name} </h4>}
+            <h3>Pet Name</h3>
+            {selectedPet && selectedPet.id && <h4 className="color-link">{selectedPet.name} </h4>}
 
             {/*  add pet visits  */}
             <h2 className="color-link align-center">Add Visits</h2>
@@ -63,8 +69,8 @@ export default function PetVisit() {
             {/*  pet visits grid */}
             {owner && selectedPet && selectedPet.id && selectedPet.visits &&
                 <>
-                    <h2 className="mt-1 mb-1">Visits </h2>
-                    <Grid
+                    <h3>Visits </h3>
+                    <Grid theme="spacing"
                         items={selectedPet.visits}
                     >
                         <GridColumn header="Description" >

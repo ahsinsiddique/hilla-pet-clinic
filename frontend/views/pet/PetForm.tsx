@@ -88,11 +88,10 @@ export default function PetForm() {
     return (
         <>
 
-            {owner && owner.id && <VerticalLayout theme="spacing" className='align-center'>
-                <div className='mt-1 container'>
+            {owner && owner.id && <VerticalLayout theme="spacing" style={{alignItems:'center'}}>
+
                     <h3>Owner Name</h3>
-                    <h4 className='ml-1'>{owner.firstName + ' ' + owner.lastName}</h4>
-                </div>
+                    <h4>{owner.firstName + ' ' + owner.lastName}</h4>
                 <TextField
                     style={{ width: "30%" }}
                     name="name"

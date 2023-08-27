@@ -1,4 +1,5 @@
 import { AppLayout } from '@hilla/react-components/AppLayout.js';
+import { HorizontalLayout } from '@hilla/react-components/HorizontalLayout.js';
 import { Icon } from "@hilla/react-components/Icon.js";
 import { Tab } from "@hilla/react-components/Tab.js";
 import { Tabs } from "@hilla/react-components/Tabs.js";
@@ -20,20 +21,21 @@ export default function MenuOnLeftLayout() {
 
     return (
         <AppLayout>
-
-            <h3 style={{ marginLeft: "10rem" }} slot="navbar">
-                <img src="../components/images/hilla-logo.png" alt="" style={{ width: "25px", paddingRight: "1rem" }} />
+            <HorizontalLayout theme='spacing' slot="navbar" style={{marginLeft: '10rem'}}>
+                <img src="../components/images/hilla-logo.png" alt="" width="25px" />
                 Hilla Pet Clinic
-            </h3>
+            </HorizontalLayout>
 
             <Tabs slot="navbar" orientation="horizontal">
                 {menuRoutes.map(({ path, handle: { icon, title, isNotDisplayOnNavBar } }) => (
-                    < Tab key={path} > {!isNotDisplayOnNavBar &&
-                        <NavLink className={({ isActive }) => `${isActive ? 'bg-contrast-10' : ''}`}
-                            key={path} to={path}>
-                            <Icon icon={icon} />  {title}
-                        </NavLink>}
-                    </Tab>
+                    !isNotDisplayOnNavBar && <>
+                        < Tab key={path} >
+                            <NavLink className={({ isActive }) => `${isActive ? 'bg-contrast-10' : ''}`}
+                                key={path} to={path}>
+                                <Icon icon={icon} className='--lumo-icon-size-s' />  {title}
+                            </NavLink>
+                        </Tab>
+                    </>
                 ))}
             </Tabs>
 

@@ -1,26 +1,12 @@
 .container {
   margin-left: 8rem;
   margin-right: 8rem;
+  margin-top: 1rem;
 }
 .pet-logo {
   display: flex;
   margin-left: 3rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.ml-1 {
-  margin-left: 1rem;
-}
-
-.mt-1 {
-  margin-top: 1rem;
-}
-.mt-2 {
-  margin-top: 2rem;
-}
-
-.mb-1 {
   margin-bottom: 1rem;
 }
 
@@ -31,6 +17,6 @@
 }
 
 .color-link {
-  color: rgb(51, 143, 201);
+  color: var( --lumo-primary-color);
   cursor: pointer;
 }

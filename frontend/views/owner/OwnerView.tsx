@@ -23,8 +23,8 @@ export default function OwnerView() {
     }
 
     return (
-        <div className="container mt-2">
-            <Button className="mb-1" theme="primary" onClick={() => navigate('/owner/new')}
+        <div className="container">
+            <Button theme="primary" onClick={() => navigate('/owner/new')}
             >Add New Owner</Button>
             <Grid
                 items={owners}
