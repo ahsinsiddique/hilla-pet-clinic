@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acb948bb-05ac-42b1-bb56-e9652fbf7a95" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/MainLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/CreateOwner.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/Owner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/PetRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerInformationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/owner/OwnerView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/owner/OwnerView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/pet/PetForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/pet/PetForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/pet/PetVisit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/pet/PetVisit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/pet/PetVisitForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/pet/PetVisitForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/AbstractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/entity/owner/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/OwnerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/data/repository/OwnerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/OwnerEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/PetEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VisitEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/endpoints/VisitEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/petclinic/application/services/OwnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/petclinic/application/services/OwnerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +87,8 @@
       <recent name="$PROJECT_DIR$/frontend/views" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.petclinic.application.endpoints" />
       <recent name="com.petclinic.application.data.repository" />
+      <recent name="com.petclinic.application.endpoints" />
     </key>
   </component>
   <component name="RunManager">
@@ -109,7 +115,7 @@
       <workItem from="1688537011786" duration="4930000" />
       <workItem from="1689407266949" duration="1604000" />
       <workItem from="1691675704190" duration="25000" />
-      <workItem from="1692198489681" duration="7500000" />
+      <workItem from="1692198489681" duration="19318000" />
     </task>
     <servers />
   </component>

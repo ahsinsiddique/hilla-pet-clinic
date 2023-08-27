@@ -1,7 +1,7 @@
 import { EndpointValidationError } from '@hilla/frontend';
 import { Button } from '@hilla/react-components/Button.js';
 import { DatePicker } from '@hilla/react-components/DatePicker.js';
-import { Select } from '@hilla/react-components/Select.js';
+import { Select, SelectItem } from '@hilla/react-components/Select.js';
 import { TextField } from '@hilla/react-components/TextField.js';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owner/Owner';
@@ -14,9 +14,9 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function PetForm() {
-    const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<PetType> | any);
-    const [petTypesData, setPetTypesData] = useState([] as Array<PetType> | any);
-    const [owner, setOwner] = useState({} as Owner | any);
+    const [petTypesDropdownData, setPetTypesDropdownData] = useState([] as Array<SelectItem>);
+    const [petTypesData, setPetTypesData] = useState([] as Array<PetType>);
+    const [owner, setOwner] = useState({} as Owner);
     const location = useLocation();
     const { petId } = useParams();
     const navigete = useNavigate();
@@ -28,7 +28,7 @@ export default function PetForm() {
         let types = JSON.parse(JSON.stringify(petTypeApiData))
         types = types.map((type: PetType) => { return { label: type.name, value: type.name } });
         setPetTypesDropdownData(types);
-        setPetTypesData(petTypeApiData);
+        setPetTypesData(petTypeApiData as Array<PetType>);
 
     }
     useEffect(() => {
@@ -51,10 +51,10 @@ export default function PetForm() {
         onSubmit: async (values: Pet, { setSubmitting, setErrors, setStatus }) => {
             try {
                 if (petId) {
-                    let pet = owner.pets.filter((pet: Pet) => pet.id = Number(petId))[0];
-                    pet.name = values.name;
-                    pet.birthDate = formatDateIso8601(values.birthDate);
-                    pet.type = petTypesData.filter((type: any) => type.name === values.type)[0];
+                    let pet = owner.pets && owner.pets.filter((pet: any) => pet.id = Number(petId))[0];
+                    pet ? pet.name = values.name : '';
+                    pet ? pet.birthDate = formatDateIso8601(values.birthDate) : '';
+                    pet ? pet.type = petTypesData.filter((type: any) => type.name === values.type)[0] : '';
                     // update pet details params as Pet pet, Owner owner
                     const _owner: any = await PetEndpoint.processUpdateForm(pet, owner) ?? values;
                     onDataSave(_owner);
@@ -63,7 +63,7 @@ export default function PetForm() {
                     const petType = petTypesData.filter((type: any) => type.name === values.type);
                     petForm['type'] = petType.length > 0 ? petType[0] : ''
                     petForm['birthDate'] = formatDateIso8601(values.birthDate);
-                    const _owner: any = await PetEndpoint.processPetCreationForm(owner, petForm) ?? values;
+                    const _owner: Owner = await PetEndpoint.processPetCreationForm(owner, petForm) ?? values;
                     onDataSave(_owner);
                 }
 

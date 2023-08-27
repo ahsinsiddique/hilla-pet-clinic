@@ -8,24 +8,22 @@ import { useParams } from "react-router-dom";
 import PetVisitForm from "./PetVisitForm";
 
 export default function PetVisit() {
-    const [owner, setOwner] = useState({} as Owner | any);
-    const [selectedPet, setSelectedPet] = useState({} as Pet | any);
+    const [owner, setOwner] = useState({} as Owner);
+    const [selectedPet, setSelectedPet] = useState({} as Pet);
     const { ownerId } = useParams();
-
-    const setSelectedItems = (event: any) => {
-        owner.selectedPetId = event.id;
-        setSelectedPet(event);
-    }
-    const onDataSaved = (owner: Owner | any) => {
-        setSelectedPet(owner.pets?.find((pet: any) => pet.id === owner.selectedPetId))
+    
+    const onDataSaved = (owner: Owner) => {
+        const pet = owner.pets?.find((pet) => pet && pet.id === selectedPet.id);
         setOwner(owner);
+        setSelectedPet(pet as Pet);
     }
     const fetchData = async () => {
-        const data: any = await OwnerEndpoint.findOwner(Number(ownerId));
-        setOwner(data);
-        setSelectedPet(data.pets.length > 0 ? data.pets[0] : []);
+        const _owner = await OwnerEndpoint.findOwner(Number(ownerId));
+        setOwner(_owner as Owner);
+        setSelectedPet(_owner && _owner.pets
+            && _owner.pets.length > 0 ? _owner.pets[0] as Pet : {} as Pet);
     }
-    
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -41,7 +39,7 @@ export default function PetVisit() {
                         <Grid
                             items={owner.pets}
                             onActiveItemChanged={({ detail: { value } }) =>
-                                setSelectedItems(value)
+                                setSelectedPet(value as Pet)
                             }  >
                             <GridColumn header="Name" >
                                 {({ item }) => <span className="color-link">{item.name}</span>}
@@ -56,14 +54,14 @@ export default function PetVisit() {
                 }
             </>
             <h3 className="mt-1">Pet Name</h3>
-            <h4 className="ml-1 color-link">{selectedPet.name} </h4>
+            {selectedPet && selectedPet.id && <h4 className="ml-1 color-link">{selectedPet.name} </h4>}
 
             {/*  add pet visits  */}
             <h2 className="color-link align-center">Add Visits</h2>
-            {owner && <PetVisitForm {...owner} onDataSaved={onDataSaved} />}
+            {owner && <PetVisitForm {...selectedPet} onDataSaved={onDataSaved} />}
 
             {/*  pet visits grid */}
-            {owner && selectedPet && selectedPet.visits &&
+            {owner && selectedPet && selectedPet.id && selectedPet.visits &&
                 <>
                     <h2 className="mt-1 mb-1">Visits </h2>
                     <Grid

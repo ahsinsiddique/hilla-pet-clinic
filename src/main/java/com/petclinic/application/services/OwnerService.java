@@ -33,6 +33,7 @@ public class OwnerService {
         }
     }
 
+    @Transactional
     public Owner saveOwner(Owner model) {
         model.isNew();
         return this.ownerRepository.save(model);

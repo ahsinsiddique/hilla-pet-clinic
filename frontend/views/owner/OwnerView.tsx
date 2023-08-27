@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function OwnerView() {
-    const [owners, setOwners] = useState([]);
+    const [owners, setOwners] = useState([] as Array<Owner>);
     const navigate = useNavigate();
 
     const fetchData = async () => {
-        const data: any = await OwnerEndpoint.getOwners();
-        setOwners(data);
+        const owners: any = await OwnerEndpoint.getOwners();
+        setOwners(owners);
     }
     useEffect(() => {
         fetchData();

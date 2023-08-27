@@ -1,18 +1,14 @@
 package com.petclinic.application.data.entity.owner;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
+import com.petclinic.application.data.entity.Person;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.core.style.ToStringCreator;
 import org.springframework.util.Assert;
-
-import com.petclinic.application.data.entity.Person;
-
-import jakarta.validation.constraints.Digits;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "owners")

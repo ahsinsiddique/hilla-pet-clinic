@@ -8,23 +8,21 @@ import { EndpointValidationError } from '@hilla/frontend';
 import { DatePicker } from '@hilla/react-components/DatePicker.js';
 import { VerticalLayout } from '@hilla/react-components/VerticalLayout.js';
 import Owner from 'Frontend/generated/com/petclinic/application/data/entity/owner/Owner';
+import Pet from 'Frontend/generated/com/petclinic/application/data/entity/owner/Pet';
 import Visit from 'Frontend/generated/com/petclinic/application/data/entity/owner/Visit';
 import { VisitEndpoint } from 'Frontend/generated/endpoints';
 import { formatDateIso8601 } from 'Frontend/themes/hilla-pet-clinic/utils';
+import { useParams } from 'react-router-dom';
 
 export default function PetVisitForm(props: any) {
-    const [owner, setOwner] = useState({} as Owner | any);
-
+    const [selectedPet, setSelectedPet] = useState({} as Pet);
+    const { ownerId } = useParams();
     // set form initial values
     let formInitialValues: any = {
         date: '', description: ''
     }
     useEffect(() => {
-        let owner = JSON.parse(JSON.stringify(props));
-        if (owner && owner.pets && !owner.hasOwnProperty('selectedPetId')) {
-            owner['selectedPetId'] = owner.pets && owner.pets[0].id;
-        }
-        setOwner(owner);
+        setSelectedPet(props);
     }, [props]);
 
     //  reset page state after submitting form
@@ -39,8 +37,7 @@ export default function PetVisitForm(props: any) {
                 vistFormValues.date = formatDateIso8601(values.date);
                 vistFormValues.description = values.description;
                 // add pet visit 
-                const _owner: any = await VisitEndpoint.processNewVisitForm(owner, owner.selectedPetId, vistFormValues) ?? values;
-                _owner.selectedPetId = owner.selectedPetId;
+                const _owner: any = await VisitEndpoint.processNewVisitForm(Number(ownerId), selectedPet.id!, vistFormValues) ?? values;
                 onDataSave(_owner);
                 formik.resetForm();
             } catch (e: unknown) {

@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function OwnerInformationForm() {
-    const [owner, setOwner] = useState([] as Array<Owner> | any);
+    const [owner, setOwner] = useState({} as Owner);
     const { ownerId } = useParams();
     const navigate = useNavigate();
     const setSelectedItems = (pet: Pet[]) => {
@@ -71,7 +71,7 @@ export default function OwnerInformationForm() {
                 <Button theme="primary" style={{ marginLeft: '1rem' }}
                     onClick={() => { navigate('/pet/new', { state: owner }) }}>Add New Pet
                 </Button>
-                {owner.id && owner.pets.length > 0 &&
+                {owner.id && owner.pets && owner.pets.length > 0 &&
                     <Button theme="secondary"
                         style={{ marginLeft: '1rem' }}
                         onClick={() => navigate(`/owner/${owner.id}/pets-visit-details`)}>Pets Visit Details

@@ -7,9 +7,8 @@ import java.io.Serializable;
 public abstract class AbstractEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgenerator")
     // The initial value is to account for data.sql demo data ids
-    @SequenceGenerator(name = "idgenerator", initialValue = 1000)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Version

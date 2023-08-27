@@ -1,17 +1,15 @@
 package com.petclinic.application.data.repository;
 
-import java.util.List;
-
+import com.petclinic.application.data.entity.owner.Owner;
+import com.petclinic.application.data.entity.owner.PetType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import com.petclinic.application.data.entity.owner.Owner;
-import com.petclinic.application.data.entity.owner.PetType;
-
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
 
 	@Query("SELECT ptype FROM PetType ptype ORDER BY ptype.name")
@@ -28,7 +26,8 @@ public interface OwnerRepository extends JpaRepository<Owner, Long> {
 	@Transactional(readOnly = true)
 	Owner findById(@Param("id") Integer id);
 
-//	Owner save(Owner owner);
+	@Transactional
+	Owner save(Owner owner);
 
 	/**
 	 * Returns all the owners from data store

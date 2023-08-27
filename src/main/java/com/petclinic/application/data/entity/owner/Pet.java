@@ -1,12 +1,13 @@
 package com.petclinic.application.data.entity.owner;
 
+import com.petclinic.application.data.entity.NamedEntity;
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
-import com.petclinic.application.data.entity.NamedEntity;
 
 @Entity
 @Table(name = "pets")

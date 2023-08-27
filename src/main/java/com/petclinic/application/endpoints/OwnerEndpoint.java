@@ -5,7 +5,6 @@ import com.petclinic.application.services.OwnerService;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
 import jakarta.transaction.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
