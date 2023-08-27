@@ -8,7 +8,6 @@ import com.vaadin.flow.router.NotFoundException;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Endpoint
 @AnonymousAllowed

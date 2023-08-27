@@ -22,7 +22,7 @@ export default function MenuOnLeftLayout() {
         <AppLayout>
 
             <h3 style={{ marginLeft: "10rem" }} slot="navbar">
-                <img src="../themes/hilla-logo.png" alt="" style={{ width: "25px", paddingRight: "1rem" }} />
+                <img src="../components/images/hilla-logo.png" alt="" style={{ width: "25px", paddingRight: "1rem" }} />
                 Hilla Pet Clinic
             </h3>
 
