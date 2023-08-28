@@ -9,6 +9,7 @@ import '@vaadin/icons'
 import OwnerForm from './views/owner/OwnerForm';
 import OwnerInformationForm from './views/owner/OwnerInformationForm';
 import PetForm from './views/pet/PetForm';
+import PageNotFound from './views/PageNotFound';
 
 const AboutView = lazy(async () => import('Frontend/views/home/HomeView.js'));
 export type MenuProps = Readonly<{
@@ -50,6 +51,8 @@ export const routes: readonly ViewRouteObject[] = [
       { path: '/pet/new', element: <PetForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
       { path: '/owner/details/:ownerId', element: <OwnerInformationForm />, handle: { icon: 'lumo:user', title: 'Owner',isNotDisplayOnNavBar: true } },
       { path: '/owner/:ownerId/pets-visit-details', element: <PetVisit />, handle: { icon: 'star', title: 'Pet Visit', isNotDisplayOnNavBar: true } },
+      { path: '*', element: <PageNotFound />, handle: { icon: 'star', title: 'Pet Visit', isNotDisplayOnNavBar: true } },
+   
     ],
   },
 ];

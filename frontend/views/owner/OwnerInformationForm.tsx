@@ -65,15 +65,14 @@ export default function OwnerInformationForm() {
                     </HorizontalLayout>
                 </>}
 
-            <HorizontalLayout theme="margin" className="align-center">
+            <HorizontalLayout theme="spacing margin" className="align-center">
                 <Button theme="primary" onClick={() => navigate(`/owner/${owner.id}`, { state: owner })}>Update Owner
                 </Button>
-                <Button theme="primary" style={{ marginLeft: '1rem' }}
+                <Button theme="primary"
                     onClick={() => { navigate('/pet/new', { state: owner }) }}>Add New Pet
                 </Button>
                 {owner.id && owner.pets && owner.pets.length > 0 &&
                     <Button theme="secondary"
-                        style={{ marginLeft: '1rem' }}
                         onClick={() => navigate(`/owner/${owner.id}/pets-visit-details`)}>Pets Visit Details
                     </Button>}
             </HorizontalLayout>
