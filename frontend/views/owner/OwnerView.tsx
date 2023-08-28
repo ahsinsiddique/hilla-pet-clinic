@@ -11,8 +11,8 @@ export default function OwnerView() {
     const navigate = useNavigate();
 
     const fetchData = async () => {
-        const owners: any = await OwnerEndpoint.getOwners();
-        setOwners(owners);
+        const ownersApiData: Array<Owner> = await OwnerEndpoint.getOwners() as Array<Owner>;
+        setOwners(ownersApiData);
     }
     useEffect(() => {
         fetchData();

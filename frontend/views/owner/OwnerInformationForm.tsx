@@ -19,7 +19,7 @@ export default function OwnerInformationForm() {
     }
 
     const fetchData = async () => {
-        const data: any = await OwnerEndpoint.findOwner(Number(ownerId));
+        const data: Owner = await OwnerEndpoint.findOwner(Number(ownerId)) as Owner;
         setOwner(data);
     }
 
